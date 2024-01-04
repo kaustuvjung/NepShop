@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
+import Store from "./store"
+import Login from "./components/user/Login"
 function App() {
-  const [count, setCount] = useState(0)
+  const username  = "ecommerce web page"
+ 
 
   return (
     <>
-     <p>ecommerce </p>
-    </>
+   <h1>{username}</h1>
+  <Store/>
+  <Login/>
+  </>
+
   )
 }
 

@@ -7,4 +7,3 @@ dotenv.config({
 })
 
 connectDB()
-
