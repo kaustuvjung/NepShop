@@ -1,18 +1,13 @@
-
-import Store from "./store"
-import Login from "./components/user/Login"
-function App() {
-  const username  = "ecommerce web page"
- 
-
+import React from 'react'; 
+import './App.css';
+import Login from './components/user/Login';
+const App = () => {
   return (
-    <>
-   <h1>{username}</h1>
-  <Store/>
-  <Login/>
-  </>
+    <div>
+     <h1>home</h1>
+     <Login />
+    </div>
+  );
+};
 
-  )
-}
-
-export default App
+export default App;
