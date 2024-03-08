@@ -4,6 +4,8 @@ import "./Home.scss"
 import { productData } from '../components/carousel/data'
 import ProductCarousel from '../components/carousel/Carousel'
 import CarouselItem from '../components/carousel/CarouselItem'
+import ProductCategory from './ProductCategory'
+import FotterLink from '../components/footer/FotterLink'
 
 
 const PageHeading = ({heading, btnText} ) => {
@@ -39,12 +41,20 @@ const Home = () => {
     <div>
      <Slider />
      <section>
-      <div className="container">
+      <div className="container ">
         <PageHeading heading={"Latest Product"} 
         btnText={"Shop NOW"}/>
         <ProductCarousel  products={productss}/>
       </div>
      </section>
+     <section className="--bg-grey">
+      <div className="container">
+        <h3>Category</h3>
+        <ProductCategory />
+  
+      </div>
+     </section>
+     <FotterLink />
     </div>
   )
 }
