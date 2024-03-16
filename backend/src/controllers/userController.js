@@ -121,8 +121,20 @@ const Logout = asyncHandler ( async (req, res ) => {
     // res.send("-------Logout---- !!!....");
 });
 
+// Get User 
+const getUser = asyncHandler (async (req, res) => {
+   const user =  await User.findById(req.user._id).select("-password");
+   if(user){
+    res.status(200).json(user)
+   }else{
+    res.status(400)
+    throw new Error("User Not found")
+   }
+});
+
 module.exports = {
     registerUser,
     loginUser,
     Logout,
+    getUser,
 };
