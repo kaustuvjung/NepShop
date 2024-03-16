@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
 import { NavLink , Link  } from 'react-router-dom';
 
+
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
   ArrowPathIcon,
@@ -41,7 +42,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-gray-600 font-sans dark:bg-gray-400">
+    <header className="bg-black-600 font-sans dark:bg-gray-400">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1" > {Logo}</div>
         
@@ -114,7 +115,7 @@ export default function Header() {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <NavLink to={"/login"} className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
-          Login
+         Login
           </NavLink>
         </div>
 

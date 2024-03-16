@@ -54,6 +54,7 @@ const Home = () => {
   
       </div>
      </section>
+     
      <FotterLink />
     </div>
   )

@@ -1,10 +1,8 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-import './index.css';
+import './index.css'
 import Header from "./components/header/Header";
-import Login from './components/user/Login';
 import Fotter from './components/footer/Fotter';
-import Notfound from './components/Error/Notfound';
 import Home from "./home/Home";
 
 const App = () => {
@@ -16,6 +14,8 @@ const App = () => {
 
 
       <Route path="/" element={<Home/>}  />
+      
+      
     </Routes> 
     <Fotter /> 
     </BrowserRouter>
