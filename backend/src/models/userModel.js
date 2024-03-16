@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { ObjectId }= mongoose.Schema;
-
+const bcrypt = require("bcryptjs"); 
 const userSchema = mongoose.Schema({
     name: {
         type: String,
@@ -34,6 +34,7 @@ const userSchema = mongoose.Schema({
         default : "https://i.ibb.co/4pDNDk1/avatar.png",
     },
     phone:{
+
         type: String,
         default: "+977",
     },
@@ -43,6 +44,18 @@ const userSchema = mongoose.Schema({
 
     },
 });
+
+// encrypt password before sending to dtabase
+userSchema.pre("save", async function(next) {
+    if (!this.isModified("password")) {
+        return next()
+    }
+    // Hash password
+    const salt =  await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(this.password, salt)
+    this.password = hashedPassword
+    next()
+});
+
 const User = mongoose.model("User", userSchema);
 module.exports = User;
-// module.exports = mongoose.model('User', userSchema);
