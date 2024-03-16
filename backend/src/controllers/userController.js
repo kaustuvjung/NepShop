@@ -131,10 +131,24 @@ const getUser = asyncHandler (async (req, res) => {
     throw new Error("User Not found")
    }
 });
+// Get login  Status
+const  getLoginStatus= asyncHandler (async ( req, res) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.json(false)               
+    }  
+    // verify Token
+    const verified = jwt.verify(token, process.env.JWT_SECRET );
+    if (verified) {
+        res.json(true)               
+    } 
+    res.json(false)
+});
 
 module.exports = {
     registerUser,
     loginUser,
     Logout,
     getUser,
+    getLoginStatus,
 };
