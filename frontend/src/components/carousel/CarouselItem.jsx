@@ -6,9 +6,9 @@ import { shortenText } from '../../utils/Index'
 const CarouselItem = ({url , name, price,
   description}) => {
   return (
-    <div className="carouselItem">
+    <div className="shadow-md w-96 h-96 mx-auto mr-5 text-center overflow-hidden">
         <Link to="/product-details">
-            <img className="product--image" src=
+            <img className="w-full h-3/5 object-cover cursor-pointer" src=
             {url} alt="product" />
             <p className="price">
                 {`$${price}`}

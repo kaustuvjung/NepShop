@@ -11,18 +11,19 @@ import FotterLink from '../components/footer/FotterLink'
 const PageHeading = ({heading, btnText} ) => {
   return (
     <>
-    <div className="--flex-between">
-      <h2 className="--fw-thin">{heading}</h2>
-      <button className="--btn">
+    <div className="flex justify-between items-center">
+      <h1 className="font bold">{heading}</h1>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         {btnText}
       </button>
     </div>
-    <div className="--hr"></div>
+    <div className="border-t border-gray-300 my-2"></div>
     </>
   )
 }
 
 const Home = () => {
+
   const productss = productData.map((item, index) => {
     return(
       <div key ={item.id}>
@@ -41,17 +42,18 @@ const Home = () => {
     <div>
      <Slider />
      <section>
-      <div className="container ">
+      <div className="container  ">
         <PageHeading heading={"Latest Product"} 
         btnText={"Shop NOW"}/>
         <ProductCarousel  products={productss}/>
       </div>
      </section>
+     
+
      <section className="--bg-grey">
       <div className="container">
         <h3>Category</h3>
         <ProductCategory />
-  
       </div>
      </section>
      

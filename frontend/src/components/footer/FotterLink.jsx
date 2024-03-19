@@ -8,20 +8,7 @@ import LogoImg from "../../assets/download.png"
 const FotterLink = () => {
   return (
      <>
-     <section className="contact-section">
-        <div className="container contact">
-            <div className="contact-icon">
-                <FaFacebookF />
-                <FaTwitter />
-                <FaInstagram />
-            </div>
-            <h2>Lets's Talk ?</h2>
-            <a href="#home" className="btn btn-dark" >
-              Make An enquiry!!
-            </a>
 
-        </div>
-     </section>
      <section className="footer-section">
       <div className="container footer">
         <div className="footer-logo">

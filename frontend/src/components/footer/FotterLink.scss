@@ -1,27 +1,3 @@
-contact-section {
-    width: 100%;
-    background-color: #222831;
-    //   background-color: var(--color-grey);
-    padding: 9rem 0;
-    position: relative;
-    z-index: 0;
-    overflow: hidden;
-  }
-  
-  .contact-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150rem;
-    height: 100%;
-    background-image: url(../../assets/bg-boost-desktop.svg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    z-index: -1;
-    overflow: hidden;
-  }
-  
   .contact {
     display: flex;
     justify-content: space-between;
@@ -97,6 +73,7 @@ contact-section {
   }
   
   // Footer section
+  
   .footer-section {
     padding: 5rem 0;
     background-color: #222831;
