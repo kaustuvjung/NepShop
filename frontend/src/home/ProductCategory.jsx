@@ -38,11 +38,11 @@ const categories =[
 const Category = ({title , image}) => {
     const navigate = useNavigate()
     return(
-        <div className="category">
-            <h3>{title}</h3>
-            <img src={image} alt="cat" />
-            <div className="--btn" onClick={() => navigate("/shop")}>
-                {"Shop Now>>>"}
+        <div className="w-80 h-96 shadow-md mr-5 mb-5 overflow-hidden bg-white rounded-md">
+            <h3 className='p-4'>{title}</h3>
+            <img className="w-full h-3/4 object-cover cursor-pointer" src={image} alt="cat" />
+            <div className="text-center py-2 bg-blue-500 text-white cursor-pointer"  onClick={() => navigate("/shop")}>
+                {"Shop Now"}
             </div>
         </div>
     )
@@ -51,7 +51,7 @@ const Category = ({title , image}) => {
 const ProductCategory = () => {
   
   return (
-    <div className="categories ">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
         {categories.map((cat) => {
             return(
                 <div key={cat.id} className="flex justify-center">

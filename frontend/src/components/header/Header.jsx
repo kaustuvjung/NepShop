@@ -76,21 +76,23 @@ export default function Header() {
             </Transition>
           </Popover>
           
+          <NavLink to={"/shop"} className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
+          Shop
+          </NavLink>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="#" className="teegister#xt-sm font-semibold leading-6 text-gray-900">
             Features
           </a>
           
-          <NavLink to={"/MarketPlace"} className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
-          MarketPlace
-          </NavLink>
+         
           
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
             Company
           </a>
         </Popover.Group>
+        <section className='hidden lg:flex lg:flex-1 lg:justify-between'>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <NavLink to={"/login"} className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
          Login
           </NavLink>
@@ -99,6 +101,14 @@ export default function Header() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
            <NavLink to={"/register" }className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
             Register
+          </NavLink>
+        </div>
+        </section>
+
+
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+           <NavLink to={"/cart" }className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
+            Cart
           </NavLink>
         </div>
       
@@ -123,7 +133,7 @@ export default function Header() {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Marketplace
+                  Shop
                 </a>
 
             <button
