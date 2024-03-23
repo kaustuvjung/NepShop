@@ -131,6 +131,7 @@ const getUser = asyncHandler (async (req, res) => {
     throw new Error("User Not found")
    }
 });
+
 // Get login  Status
 const  getLoginStatus= asyncHandler (async ( req, res) => {
     const token = req.cookies.token;
