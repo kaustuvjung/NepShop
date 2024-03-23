@@ -3,7 +3,7 @@ import axios from "axios";
 
 // const BACKEND_URL = "http://localhost:8000"
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
-//  process.env.VITE_APP_BACKEND_URL
+
 console.log("Backend URL:", BACKEND_URL);
 console.log( import.meta.env.VITE_FRONTEND_URL);
 
@@ -19,7 +19,21 @@ const register = async (userData) => {
     return response.data
 };
 
+// Login User 
+const login = async (userData) => {
+    const response = await axios.post(API_URL + "login", userData);
+    return response.data;
+};
+
+// Logout User 
+const logout = async () => {
+    const response = await axios.get(API_URL + "logout");
+    return response.data.message;
+};
+
 const authService = {
-    register
-}
+    register,
+    login,
+    logout,
+};
 export default authService;
