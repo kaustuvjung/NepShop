@@ -40,7 +40,7 @@ const Home = () => {
 
   return (
     <div>
-     <Slider />
+     {/* <Slider /> */}
      <section>
       <div className="containers">
         <PageHeading heading={"Latest Product"} 
