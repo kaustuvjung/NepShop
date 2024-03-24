@@ -12,7 +12,7 @@ const PageHeading = ({heading, btnText} ) => {
   return (
     <>
     <div className="flex justify-between items-center">
-      <h3 className="font bold">{heading}</h3>
+      <h3 className="font bold mt-4">{heading}</h3>
       <button className=" text-center py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         {btnText}
       </button>
@@ -39,10 +39,11 @@ const Home = () => {
   })
 
   return (
-    <div>
-     {/* <Slider /> */}
+    <>
+    <div  className='container mx-auto mt-1'>
+     <Slider />
      <section>
-      <div className="containers">
+      <div  className='container mt-4 '>
         <PageHeading heading={"Latest Product"} 
         btnText={"Shop NOW"}/>
         <ProductCarousel  products={productss}/>
@@ -51,15 +52,17 @@ const Home = () => {
      
 
      <section className="--bg-grey">
-      <div className="container">
+      <div className="container mt-4 mb-4">
         <h3>Category</h3>
 
         <ProductCategory />
       </div>
      </section>
      
-     <FotterLink />
+     
     </div>
+    <FotterLink />
+    </>
   )
 }
 

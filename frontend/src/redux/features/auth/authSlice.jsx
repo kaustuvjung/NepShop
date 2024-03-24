@@ -3,8 +3,6 @@ import authService from './authService';
 import { toast } from 'react-toastify';
 
 
-
-
 const initialState = {
     isLoggedIn: false,
     user : null,
@@ -52,6 +50,7 @@ export const logout = createAsyncThunk(
         }
     }
 );
+
 // getLoginStatus
 export const getLoginStatus = createAsyncThunk(
     "auth/getLoginStatus",
@@ -65,6 +64,43 @@ export const getLoginStatus = createAsyncThunk(
     }
 );
 
+// get User
+export const getUser = createAsyncThunk(
+    "auth/getUser",
+    async (_, thunkAPI) => {
+        try {
+            return await authService.getUser();            
+        } catch (error) {     
+            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+// update User
+export const updateUser = createAsyncThunk(
+    "auth/updateUser",
+    async (userData, thunkAPI) => {
+        try {
+            return await authService.updateUser(userData);            
+        } catch (error) {     
+            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+// update User photo
+export const updatePhoto = createAsyncThunk(
+    "auth/updatePhoto",
+    async (userData, thunkAPI) => {
+        try {
+            return await authService.updatePhoto(userData);            
+        } catch (error) {     
+            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -152,8 +188,60 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+    })
+    // getUser
+    .addCase(getUser.pending, (state) =>{
+        state.isLoading = true;
+    })
+    .addCase(getUser.fulfilled, (state, action) =>{
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        console.log(action.payload);  
+    })
+    .addCase(getUser.rejected, (state, action) =>{
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+    })
+    // updateUser
+    .addCase(updateUser.pending, (state) =>{
+        state.isLoading = true;
+    })
+    .addCase(updateUser.fulfilled, (state, action) =>{
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        toast.success("User Updated");
+        console.log(action.payload);  
+    })
+    .addCase(updateUser.rejected, (state, action) =>{
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+    })
+    // update User photo
+    .addCase(updatePhoto.pending, (state) =>{
+        state.isLoading = true;
+    })
+    .addCase(updatePhoto.fulfilled, (state, action) =>{
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        toast.success("User photo Updated");
+        console.log(action.payload);  
+    })
+    .addCase(updatePhoto.rejected, (state, action) =>{
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
     });
-    
   },
 });
 

@@ -1,33 +1,18 @@
 import { Fragment, useState } from 'react'
 import { NavLink , Link, useNavigate  } from 'react-router-dom';
-
-
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
+import {  Bars3Icon,  XMarkIcon,} from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { useDispatch } from 'react-redux';
 import { RESET_AUTH, logout } from '../../redux/features/auth/authSlice';
 import ShowOnLogin, { ShowOnLogout } from '../hiddenLink/hiddenLink';
 
 
-
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 const Logo = (
   <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Compay</span>
-            NEP<span>SHOP</span>
+           <Link to="/"> NEPSHOP</Link>
           </a>
         </div>
 )
@@ -50,7 +35,7 @@ export default function Header() {
   
 
   return (
-    <header className="bg-black-600 font-sans dark:bg-gray-400">
+    <header className="bg-gray-900 text-white font-sans">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1" > {Logo}</div>
         
@@ -67,10 +52,7 @@ export default function Header() {
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-          
-              <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-            </Popover.Button>
+       
 
             <Transition
               as={Fragment}
@@ -87,11 +69,22 @@ export default function Header() {
             </Transition>
           </Popover>
           
-          <NavLink to={"/shop"} className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
+          <NavLink to={"/shop"} className={`text-sm font-semibold leading-6 text-white " ${activeLink}`}>
           Shop
           </NavLink>
+
+          <NavLink to={"/mens"} className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
+            Men
+          </NavLink>
+
+          <NavLink to={"/womens"} className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
+            Women
+          </NavLink>
+          <NavLink to={"/kids"} className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
+           Kids
+          </NavLink>
           
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
             Company
           </a>
         </Popover.Group>
@@ -99,7 +92,7 @@ export default function Header() {
         <section className='hidden lg:flex lg:flex-1 lg:justify-between'>
           <ShowOnLogout>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <NavLink to={"/login"} className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
+          <NavLink to={"/login"} className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
             Login
           </NavLink>
           </div>
@@ -107,7 +100,7 @@ export default function Header() {
 
           <ShowOnLogout>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-           <NavLink to={"/register" }className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
+           <NavLink to={"/register" }className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
             Register
           </NavLink>
         </div>
@@ -115,19 +108,19 @@ export default function Header() {
 
         </section>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-           <NavLink to={"/cart" }className={`text-sm font-semibold leading-6 text-gray-900 ${activeLink}`}>
+           <NavLink to={"/cart" }className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
             Cart
           </NavLink>
         </div>
         <ShowOnLogin>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
         
-           <NavLink to={"/order-history" } className={`text-sm font-semibold leading-6 text-gray-900 px-4 ${activeLink}`}>
+           <NavLink to={"/order-history" } className={`text-sm font-semibold leading-6 text-white px-4 ${activeLink}`}>
            My Order
           </NavLink>
        
 
-          <Link to= {"/"}  onClick={logoutUser} className= "text-sm font-semibold leading-6 text-gray-900 ">
+          <Link to= {"/"}  onClick={logoutUser} className= "text-sm font-semibold leading-6 text-white">
           Logout
           </Link>
         </div>  
@@ -163,13 +156,33 @@ export default function Header() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-
-              <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+              <NavLink
+                  to={"/shop"}
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Shop
-                </a>
+                </NavLink>
+                <NavLink
+                  to={"/mens"}
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Men
+                </NavLink>
+                <NavLink
+                  to={"/womens"}
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Women
+                </NavLink>
+                <NavLink
+                  to={"/kids"}
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Kids
+                </NavLink>
+                
+                
+                
                 <ShowOnLogout>          
                 <NavLink
                   to={"/login"}

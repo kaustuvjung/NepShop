@@ -12,7 +12,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getLoginStatus } from "./redux/features/auth/authSlice";
-//635
+import Profile from "./pages/profile/Profile";
+import Shop from "./pages/Shop";
+import ShopCategory from "./pages/ShopCategory";
+import Product from "./pages/Product";
+import Cart from "./pages/Cart";
+
 
 const App = () => {
   // apply every Http request we made
@@ -23,21 +28,29 @@ const App = () => {
     dispatch(getLoginStatus());
   }, [dispatch]);
 
+
   return (
     <>
+
     <BrowserRouter>
     <ToastContainer />
     <Header />
     <Routes>
-
-
       <Route path="/" element={<Home/>}  />
+      <Route path="/shop" element={<Shop /> } />
+      <Route path="/mens" element={<ShopCategory category ="men" /> } />
+      <Route path="/womens" element={<ShopCategory category ="women" /> } />
+      <Route path="/kids" element={<ShopCategory category ="kid" /> } />
+      <Route path="/product" element={<Product/> } >
+        <Route path=":productId" element={<Product/>}/>
+      </Route>
+      <Route path="/cart" element={<Cart/> } />
       <Route path="/login" element={<Login/>}  />
       <Route path="/register" element={<Register/>}  />
-      
+      <Route path="/profile" element={<Profile />}  />
       
     </Routes> 
-    <Fotter /> 
+    {/* <Fotter />  */}
     </BrowserRouter>
 
 
