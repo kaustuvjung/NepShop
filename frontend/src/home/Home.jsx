@@ -5,7 +5,6 @@ import { productData } from '../components/carousel/data'
 import ProductCarousel from '../components/carousel/Carousel'
 import CarouselItem from '../components/carousel/CarouselItem'
 import ProductCategory from './ProductCategory'
-import FotterLink from '../components/footer/FotterLink'
 
 
 const PageHeading = ({heading, btnText} ) => {
@@ -61,7 +60,7 @@ const Home = () => {
      
      
     </div>
-    <FotterLink />
+   
     </>
   )
 }

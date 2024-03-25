@@ -66,12 +66,13 @@ const registerUser = asyncHandler (async (req, res) => {
         res.status(400);
         throw new Error ("Invalid user data");
     }
-    
-    // res.send("Register User....!!");
+  
 });
+
 // Login User
 const loginUser = asyncHandler (async (req, res) => {
     const { email, password } = req.body;
+    console.log(password);
 
     // vailidate user  request
     if(!email || !password) {
@@ -79,15 +80,20 @@ const loginUser = asyncHandler (async (req, res) => {
         throw new Error("Please add email and password");
     }
     // check if user exist
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("+password");
     if ( !user) {
         res.status(400);
         throw new Error("User does not exists.")
 
     }
 
+    console.log("Password from request:", password);
+    console.log("Password from user object:", user.password);
+    
+
     // user exist check if passwor is correct
     const passwordIsCorrect = await bcrypt.compare(password, user.password);
+    console.log(passwordIsCorrect);
     
     // generate Token 
     const token = generateToken(user._id);
@@ -106,7 +112,7 @@ const loginUser = asyncHandler (async (req, res) => {
         res.status(400);
         throw new Error("Invalid email or Password");
     }
-    // res.send("Login User !!!....");
+  
 });
 
 const Logout = asyncHandler ( async (req, res ) => {

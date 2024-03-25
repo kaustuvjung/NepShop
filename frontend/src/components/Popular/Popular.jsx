@@ -6,7 +6,7 @@ import Item from '../Items/Item'
 
 const Popular = () => {
   return (
-    <div className="popular">
+    <div className="popular overflow-hidden">
         <h1>Popular In WoMen</h1>
         <hr />
         <div className="popular-item">

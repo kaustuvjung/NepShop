@@ -1,31 +1,39 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import './Fotter.scss'
+import LogoImg from "../../assets/download.svg"
+import instagram_icon from '../../assets/instagram_icon.png'
+import whatsapp_icon from '../../assets/whatsapp_icon.png'
 
 const Fotter = () => {
   return (
+    <div class="fotter px-6 py-3 mx-auto bg-blue-100 bg-opacity-80 font-sans dark:bg-gray-900">
+      <div className="fotter-logo">
+        <img src={LogoImg} alt="" />
+      </div>  
+      <ul className="footer-links">
+      <li>Company</li>
+        <li>Product</li>
+        <li>Offices</li>
+        <li>About</li>
+        <li>Contact</li>
 
-<footer class="bg-blue-100/80 font-sans dark:bg-gray-900">
-    <div class="container px-6 py-3 mx-auto">
-        
-
-        <div class="sm:col-span-3 flex gap-20">
-        {/* <div class="gap-4">
-                <p class="font-semibold text-gray-600 dark:text-white">Quick Link</p>
-                <div class="flex flex-col items-start mt-7 space-y-4">
-                    <p class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">Home</p>
-                   
-                </div>
-            </div>             */}
-            </div>
-          
-        <p class="font-sans p-8 text-start md:text-center md:text-lg md:p-4 text-white">© 2024 NepShop Inc. All rights reserved.</p>
-    </div>
-</footer>
+      </ul>
     
-
-
-
-
+        <div className="fotter-social-icon">
+          <div className="footer-icons-container">
+            <img src={instagram_icon} alt="instagram" />
+          </div>
+    
+          <div className="footer-icons-container">
+            <img src={whatsapp_icon} alt="" />
+          </div>
+        </div>
+        <div className="fotter-copyright">
+          <hr />
+        <p >© 2024 NepShop Inc. All rights reserved.</p>
+        </div>
+      </div>
   )
 }
 
