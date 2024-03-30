@@ -17,7 +17,7 @@ const CarouselItem = ({url , name, price,
             <p className="--mb">{shortenText
             (description, 25)} </p>
         </Link>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-36 rounded">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-24 rounded">
             Add To Cart
         </button>
         

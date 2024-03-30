@@ -1,29 +1,43 @@
 .profile {
+  display: flex;
+  gap: 50px;
+  margin: 50px;
+  
   .card {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     padding: 1rem;
     border: 1px solid #030b6b;
+    height: 100vh;
+
+  }
+  .card1 {
+    width: 100%;
+    margin-right: 20px;
+    max-width: 600px;
+    padding: 1rem;
+    border: 1px solid #030b6b;
+
+
   }
   .profile-photo {
     width: 100%;
-    /* // border: 1px solid #fff; */
-    background-color: light-blue;
-    padding: 0.5rem;
+    background-color: var(--light-blue);
+    padding: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 
     & img {
-      width: 500px;
-      height: 500px;
-      border: 2px solid #472121;
+      width: 300px;
+      height: 300px;
+      border: 2px solid #fff;
       border-radius: 50%;
     }
 
     & h3 {
-      color: #351414;
+      color: #fff;
       font-size: 2rem;
       text-align: center;
     }
@@ -31,8 +45,9 @@
   form {
     label {
       display: block;
-      font-size: 1.4rem;
+      font-size: 1rem;
       font-weight: 500;
+      color: red;
     }
     input[type="text"],
     input[type="number"],
@@ -42,16 +57,19 @@
     textarea,
     input[type="password"] {
       display: block;
-      font-size: 1.6rem;
-      font-weight: 300;
-      padding: 1rem;
-      margin: 1rem auto;
+      font-size: 1rem;
+      font-weight: 400;
+      padding: 0.8rem;
+      margin: 0.7rem auto;
       width: 100%;
       border: 1px solid #777;
       border-radius: 3px;
+      margin-bottom: 20px;
       outline: none;
     }
 
-   
+    // textarea {
+    //   width: 100%;
+    // }
   }
 }

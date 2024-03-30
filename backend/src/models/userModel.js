@@ -43,6 +43,11 @@ const userSchema = mongoose.Schema({
         type: String,
         default: "+977",
     },
+    isVerified: {
+        type: Boolean,
+        default: false,
+      },
+      
     address:{
         type: Object,
         // address, state, country, postalcode

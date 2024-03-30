@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --nav-width: 68px;
   --header-height: 45px;
@@ -34,24 +33,11 @@
   scroll-behavior: smooth;
 }
 
-html {
-  font-size: 10px;
-}
-
-body {
-  font-family: var(--font-family);
-  background: #eee;
-}
-
-section {
-  width: 100%;
-  padding: 4rem 0;
-}
 
 .container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
+  /* max-width: 1000px; */
+  /* margin: 0 auto;padding: 0 0px; */
+  /* padding: 0 0px; */
 }
 
 .--pad {
@@ -61,8 +47,9 @@ section {
 }
 
 .header {
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
+
 
 /* UTILITY CLASSES */
 
@@ -142,20 +129,22 @@ h4 {
   font-weight: 500;
   line-height: 1.2;
   color: var(--color-dark);
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 h1 {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 h2 {
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 h3 {
-  font-size: 2.5rem;
+  font-size: 1rem;
 }
 h4 {
   font-size: 2rem;
 }
+
+
 
 p {
   font-size: 1.5rem;
@@ -228,6 +217,11 @@ p {
   overflow: hidden;
 }
 
+
+
+/*        */
+
+
 /* Margin */
 .--m {
   margin: 1rem;
@@ -276,18 +270,21 @@ p {
   margin: 0 2rem;
 }
 
+
+
+
 /* Padding */
 .--p {
   padding: 1rem;
 }
 .--p2 {
-  padding: 2rem;
+  padding: 1rem;
 }
 .--py {
   padding: 1rem 0;
 }
 .--py2 {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 .--px {
   padding: 0 1rem;
@@ -460,7 +457,6 @@ p {
 
 a {
   font-size: 1.4rem;
-  /* color: var(--dark-blue); */
   text-decoration: none;
   transition: all 0.2s;
 }
@@ -470,7 +466,7 @@ ul {
 }
 
 a:hover {
-  /* color: var(--color-dark); */
+
   font-size: 1.5rem;
 }
 

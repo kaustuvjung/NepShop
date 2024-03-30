@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Profile.css'
+import './Profile.scss'
 import PageMenu from '../../components/pageMenu/PageMenu'
 import { useDispatch, useSelector } from 'react-redux';
 import Card from '../../components/Card/Card';
@@ -78,29 +78,27 @@ const Profile =() => {
     <>
     <section> 
     {isLoading && <Loader/>}
-    <div className="container">
+    <div className="container w-full">
         <PageMenu />
     </div>
-        <h2>Profile</h2>
+        <h2 className="flex justify-center mt-4 mr-12">Profile</h2>
 
-        <div className="--flex-start profile">
-            <Card cardClass={"card"}>
+        <div className=" profile">
+       
                 {!isLoading  &&(
                   
                   <>
+                     <Card cardClass={"card"}>
                   <div className="profile-photo">
                     
-                        <div>
+               <div>
                 <img src={imagepreview === null ? user?.phone : imagepreview} alt="profile" />
                 <h3>Role: {profile.role}</h3>
-              </div>
-                        
+              </div> 
                     </div>
                     <div>
-                        
-                    </div>
-                    <form onSubmit={saveProfile}>
-                        <div>
+                      <form onSubmit={saveProfile}>
+                      <div>
                         <p>
                             <label>Change Photo</label>
                             <input 
@@ -113,6 +111,14 @@ const Profile =() => {
                         </p>
 
                         </div>
+
+                      </form>
+                        
+                    </div>
+                    </Card>
+                    <Card cardClass={"card1"}>
+                    <form onSubmit={saveProfile}>
+                      
                       
                         <p>
                             <label>Name</label>
@@ -185,14 +191,15 @@ const Profile =() => {
                               required
                             />
                         </p>
-                        <button  className="rounded-md bg-indigo-600 p-96 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"  >
-                            Submit
+                        <button  className="--btn --btn-primary --btn-block"  >
+                           Update
                         </button>
 
                     </form>
+                    </Card>
                     </>
                 )}
-            </Card>
+          
         </div>
         </section>
     </>
