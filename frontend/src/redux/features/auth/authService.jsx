@@ -1,7 +1,7 @@
 // https request code 
 import axios from "axios";
 
-// const BACKEND_URL = "http://localhost:8000"
+
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 console.log("Backend URL:", BACKEND_URL);

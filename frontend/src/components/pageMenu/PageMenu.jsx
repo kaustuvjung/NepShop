@@ -14,6 +14,9 @@ const PageMenu = () => {
                 <li>
                     <NavLink to="/wishlist"  className="text-white">WishList</NavLink>
                 </li>
+                <li>
+                    <NavLink to="/changePassword"  className="text-white">ChangePassword</NavLink>
+                </li>
             </ul>
 
         </nav>

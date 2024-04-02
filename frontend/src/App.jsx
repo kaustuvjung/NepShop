@@ -17,6 +17,8 @@ import Shop from "./pages/Shop";
 import ShopCategory from "./pages/ShopCategory";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
+import Forgot from "./pages/auth/Forgot";
+import ChangePassword from "./pages/auth/changePassword/ChangePassword";
 
 
 const App = () => {
@@ -24,6 +26,7 @@ const App = () => {
   axios.defaults.withCredentials = true;
   // when page is refreshed it getLoginStatus from backend to clinet side.
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getLoginStatus());
   }, [dispatch]);
@@ -48,6 +51,13 @@ const App = () => {
       <Route path="/login" element={<Login/>}  />
       <Route path="/register" element={<Register/>}  />
       <Route path="/profile" element={<Profile />}  />
+      <Route path="/forgot" element={<Forgot />}  />
+      {/* <Route path="/resetPassword/:resetToken" element={<Reset/>}  /> */}
+      {/* <Route path="/loginWithCode/:email" element={<LoginWithCode/>}  /> */}
+      {/* <Route path="/verify/:verificationToken" element={<Verify/>}  /> */}
+      <Route path="/changePassword" element={<ChangePassword/>}  />
+
+
       
     </Routes> 
     <Fotter /> 

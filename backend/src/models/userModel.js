@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 const { ObjectId }= mongoose.Schema;
 const bcrypt = require("bcryptjs"); 
 const validator = require("validator");
-const userSchema = mongoose.Schema({
+
+const userSchema = mongoose.Schema(
+    {
     name: {
         type: String,
         required: [true, "Please add a name"],
@@ -31,7 +33,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true],
         default: "customer",
-        enum: ["customer", "admin"],
+        enum: ["customer", "admin","suspended"],
     },
     photo: {
         type: String,
@@ -46,7 +48,12 @@ const userSchema = mongoose.Schema({
     isVerified: {
         type: Boolean,
         default: false,
-      },
+    },
+    userAgent: {
+      type: Array,
+      required: true,
+      default: [],
+    },
       
     address:{
         type: Object,
@@ -59,9 +66,14 @@ const userSchema = mongoose.Schema({
         // },
 
     },
-    resetPasswordToken: String,
-    resetPasswordExpire: Date,
-});
+    
+},
+{
+    timestamps:true,
+    minimize:false
+}
+
+);
 
 ///encrypt password before sending to dtabase
 userSchema.pre("save", async function(next) {

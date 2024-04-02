@@ -8,7 +8,7 @@ const protect = asyncHandler( async ( req, res, next) => {
         const token = req.cookies.token;
         if (!token) {
             res.status(401);
-            throw new Error("Mot authorized, please Login");               
+            throw new Error("Not authorized, please Login");               
         }  
         
     // verify Token
@@ -28,6 +28,26 @@ const protect = asyncHandler( async ( req, res, next) => {
         throw new Error("Mot authorized, please Login");    
     }
 });
+const verifiedOnly = asyncHandler(async (req, res, next) => {
+    if (req.user && req.user.isVerified) {
+      next();
+    } else {
+      res.status(401);
+      throw new Error("Not authorized, account not verified");
+    }
+  });
+
+  const adminOnly = asyncHandler(async (req, res, next) => {
+    if (req.user && req.user.role === "admin") {
+      next();
+    } else {
+      res.status(401);
+      throw new Error("Not authorized as an admin");
+    }
+  });
+
 module.exports = {
     protect,
+    verifiedOnly,
+    adminOnly,
 }
