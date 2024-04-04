@@ -7,7 +7,7 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/
 import { useDispatch } from 'react-redux';
 import { RESET_AUTH, logout } from '../../../redux/features/auth/authSlice';
 import ShowOnLogin, { ShowOnLogout } from '../../protect/hiddenLink';
-import { UserName } from '../../../Pages/profile/Profile';
+import { UserName } from '../../../pages/profile/Profile';
 import cart_icon from '../../../assets/cart_icon.png';
 import { ShopContext } from '../../../context/ShopContext';
 

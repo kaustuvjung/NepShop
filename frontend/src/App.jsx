@@ -3,27 +3,28 @@ import './index.css'
 import Header from "./Component/layout/header/Header";
 import Fotter from './Component/layout/footer/Fotter';
 import Home from "./Component/home/Home";
-import Login from "./Pages/auth/Login";
-import Register from "./Pages/auth/Register";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoginStatus, getUser, selectIsLoggedIn, selectUser } from "./redux/features/auth/authSlice";
-import Profile from "./Pages/profile/Profile";
-import Shop from "./Pages/Shop";
-import ShopCategory from "./Pages/ShopCategory";
-import Product from "./Pages/Product";
-import Cart from "./Pages/Cart";
-import Forgot from "./Pages/auth/Forgot";
-import ChangePassword from "./Pages/auth/changePassword/ChangePassword";
-import Reset from "./Pages/auth/Reset";
-import Verify from "./Pages/auth/Verify";
-import LoginWithCode from "./Pages/auth/LoginWithCode";
+import Profile from "./pages/profile/Profile";
+import Shop from "./pages/Shop";
+import ShopCategory from "./pages/ShopCategory";
+
+import Cart from "./pages/Cart";
+import Forgot from "./pages/auth/Forgot";
+import ChangePassword from "./pages/auth/changePassword/ChangePassword";
+import Reset from "./pages/auth/Reset";
+import Verify from "./pages/auth/Verify";
+import LoginWithCode from "./pages/auth/LoginWithCode";
 import men_banner from '../src/assets/banner_mens.png';
 import women_banner from '../src/assets/banner_women.png';
 import kid_banner from '../src/assets/banner_kids.png';
+import Product from "./pages/Product";
 
 const App = () => {
   const dispatch = useDispatch();
