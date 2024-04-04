@@ -1,5 +1,4 @@
 const asyncHandler = require("express-async-handler");
-
 const Product = require("../models/productModel");
 const ErrorHandler = require("../utils/errorhandler");
 const Apifeatures = require("../utils/apiFeatures");
@@ -29,7 +28,6 @@ const getAllProducts = asyncHandler(async(req,res)=>{
         products,
         productCount
     })
-   
 });
 
 
@@ -78,7 +76,6 @@ const deleteProduct = asyncHandler(async(req,res, next)=>{
         message: "Product deleted sucessfully"
     })
 
-   
 });
 
 module.exports = {

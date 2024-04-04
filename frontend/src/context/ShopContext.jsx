@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import all_product from '../assets/all_product';
-import Product from "../pages/Product";
+
 
 export const ShopContext = createContext(null);
 const getDefaultCart = () =>{

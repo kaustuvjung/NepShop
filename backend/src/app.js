@@ -5,6 +5,7 @@ const userRoute = require("./routes/userRoutes");
 const productRoute =require('./routes/productRoutes');
 const errorHandler = require("./middlewares/errorMiddleware");
 
+
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -16,8 +17,8 @@ app.use(
         credentials : true,
     })
 );
-// Route Imports
 
+// Route Imports
 app.use("/api/v1/user", userRoute);
 app.use('/api/v1/product', productRoute);
 
