@@ -56,14 +56,14 @@ const userSchema = mongoose.Schema(
     },
       
     address:{
-        type: Object,
+        // type: Object,
         // address, state, country, postalcode
-        // type: {
-        //     address: { type: String },
-        //     state: { type: String },
-        //     country: { type: String },
-        //     postalcode: { type: String }
-        // },
+        type: {
+            address: { type: String },
+            state: { type: String },
+            country: { type: String },
+            postalcode: { type: String }
+        },
 
     },
     

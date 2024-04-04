@@ -1,11 +1,11 @@
 .pageMenu {
     color:#03073c;
-    background:rgb(106, 117, 179);
+    background: rgb(99, 125, 220);
+    padding: 10px;
+    gap: 10px;
   }
   
 .home-links{
-    /* display: flex; */
-    /* justify-content: center; */
     align-items: center;
     list-style: none;
     padding: 0;
@@ -28,8 +28,7 @@
   color: #555;
 }
   
- 
- 
+
   .activePage {
     position: relative;
     color: var(--color-danger);

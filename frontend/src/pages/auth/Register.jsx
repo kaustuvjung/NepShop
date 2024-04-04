@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import  styles from "./auth.module.scss";
-import loginImg from "../../assets/Login.png";
 import Card from '../../components/Card/Card';
 import { FaTimes } from "react-icons/fa";
 import { BsCheck2All } from "react-icons/bs";
@@ -8,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { validateEmail } from '../../utils/Index';
 import { useDispatch, useSelector } from "react-redux";
-import { RESET_AUTH, register } from '../../redux/features/auth/authSlice';
+import { RESET_AUTH, register, sendVerificationEmail } from '../../redux/features/auth/authSlice';
 import Loader from '../../components/loader/Loader';
 import PasswordInput from '../../components/passwordInput/PasswordInput';
 
@@ -108,13 +107,13 @@ const Register = () => {
       }
       // console.log(userData);
       await dispatch(register(userData));
-      // await dispatch(sendVerificationEmail());
+      await dispatch(sendVerificationEmail());
 
     };
 
   useEffect(() =>{
     if(isSuccess && isLoggedIn){
-      navigate("")
+      navigate("/")
     }
     dispatch(RESET_AUTH())
   },[isLoggedIn, isSuccess, dispatch, navigate]);

@@ -1,11 +1,15 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useContext, useState } from 'react'
 import { NavLink , Link, useNavigate  } from 'react-router-dom';
+import { FaUserCircle } from "react-icons/fa";
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {  Bars3Icon,  XMarkIcon,} from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { useDispatch } from 'react-redux';
 import { RESET_AUTH, logout } from '../../redux/features/auth/authSlice';
-import ShowOnLogin, { ShowOnLogout } from '../hiddenLink/hiddenLink';
+import ShowOnLogin, { ShowOnLogout } from '../protect/hiddenLink';
+import { UserName } from '../../pages/profile/Profile';
+import cart_icon from '../../assets/cart_icon.png';
+import { ShopContext } from '../../context/ShopContext';
 
 
 const Logo = (
@@ -25,10 +29,11 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {getTotalCartItems} = useContext(ShopContext);
 
   const logoutUser = async () =>{
-    await dispatch(logout()); 
     await dispatch(RESET_AUTH());
+    await dispatch(logout()); 
     navigate("/login");
   };
 
@@ -84,9 +89,7 @@ export default function Header() {
            Kids
           </NavLink>
           
-          <a href="#" className="text-sm font-semibold leading-6 text-white">
-            Company
-          </a>
+        
         </Popover.Group>
 
         <section className='hidden lg:flex lg:flex-1 lg:justify-between'>
@@ -109,22 +112,30 @@ export default function Header() {
         </section>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
            <NavLink to={"/cart" }className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
-            Cart
+            {/* <img src={cart_icon} alt="" /> */} Cart
+            <div>{getTotalCartItems()}</div>
           </NavLink>
         </div>
+                         
         <ShowOnLogin>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-        
            <NavLink to={"/order-history" } className={`text-sm font-semibold leading-6 text-white px-4 ${activeLink}`}>
            My Order
           </NavLink>
        
-
           <Link to= {"/"}  onClick={logoutUser} className= "text-sm font-semibold leading-6 text-white">
           Logout
           </Link>
+
+          <NavLink to={"/profile" } className={`text-sm font-semibold leading-6 text-white px-4 ${activeLink}`}>
+          <FaUserCircle size={20}/> 
+          <UserName />      
+          </NavLink>
+          
         </div>  
-        </ShowOnLogin>    
+
+        </ShowOnLogin>  
+        
       </nav>
       
       {/* mobile screen view */}
@@ -205,6 +216,15 @@ export default function Header() {
                 >
                   Cart
                 </NavLink>
+                <NavLink
+                  to={"/profile"}
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                   <FaUserCircle size={20}/> 
+                   <UserName />
+                
+                </NavLink>
+                 
 
                 <ShowOnLogin>
                 <NavLink

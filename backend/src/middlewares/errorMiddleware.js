@@ -1,11 +1,10 @@
 const ErrorHandler =require("../utils/errorhandler");
 
 const errorHandler = (err, req, res, next) => {
-    // const statusCode = res.statusCode ? res.statusCode : 500;
     err.statusCode = err.statusCode ||500;
     err.message = err.message || "internal Server error";
     if(err.name == "CastError"){
-        const message = `Resources not found . Invalid : ${err.path}`;
+        const message = `Resources not found . Invalid `;
         err = new ErrorHandler(message,400);
     }
     res.status(err.statusCode)

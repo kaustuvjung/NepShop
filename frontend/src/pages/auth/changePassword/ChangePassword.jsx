@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { Spinner } from '../../../components/loader/Loader';
 import PageMenu from '../../../components/pageMenu/PageMenu';
 import Card from '../../../components/Card/Card';
+import { RESET_AUTH, changePassword, logout } from '../../../redux/features/auth/authSlice';
+import { sendAutomatedEmail } from '../../../redux/features/email/emailSlice';
 
 
 
@@ -40,8 +42,26 @@ const ChangePassword = () => {
       return toast.error("Passwords do not match");
     }
 
+    const userData = {
+      oldPassword,
+      password,
+    };
     // Add logic to dispatch password update action
+    const emailData = {
+      subject: "Password Changed - AUTH:Z",
+      send_to: user.email,
+      reply_to: "noreply@zino",
+      template: "changePassword",
+      url: "/forgot",
+    };
+
+    await dispatch(changePassword(userData));
+    await dispatch(sendAutomatedEmail(emailData));
+    await dispatch(logout());
+    await dispatch(RESET_AUTH(userData));
+    navigate("/login");
   };
+
 
   return (
     <>

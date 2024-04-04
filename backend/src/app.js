@@ -21,6 +21,10 @@ app.use(
 app.use("/api/v1/user", userRoute);
 app.use('/api/v1/product', productRoute);
 
+app.get("/",(req, res)=>{
+    res.send("Home Page");
+})
+
 
 // Error Middleware 
 app.use(errorHandler);

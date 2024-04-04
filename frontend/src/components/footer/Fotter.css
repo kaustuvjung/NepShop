@@ -56,3 +56,29 @@
   height: 1px;
   background: rgb(122, 106, 106);
 }
+
+@media(max-width:800px){
+  .footer{
+    gap: 20px;
+  }
+  .fotter-logo{
+    gap: 10px;
+    align-items: end;
+  }
+  .fotter-logo img{
+    width: 120px;
+  }
+  .fotter-logo p{
+    font-size: 20px;
+  }
+  .footer-links{
+    font-size: 14px;
+    gap: 10px;
+  }
+  .fotter-social-icon img{
+    width: 22px;
+  }
+  .fotter-copyright{
+    font-size: 13px;
+  }
+}

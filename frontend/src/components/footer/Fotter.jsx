@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import './Fotter.scss'
+import './Fotter.css'
 import LogoImg from "../../assets/download.svg"
 import instagram_icon from '../../assets/instagram_icon.png'
 import whatsapp_icon from '../../assets/whatsapp_icon.png'
