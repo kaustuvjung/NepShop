@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import  styles from "./auth.module.scss";
-import Card from '../../Component/Card/Card';
+import Card from '../../component/Card/Card';
 import { FaTimes } from "react-icons/fa";
 import { BsCheck2All } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,8 +8,8 @@ import { toast } from 'react-toastify';
 import { validateEmail } from '../../utils/Index';
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, register, sendVerificationEmail } from '../../redux/features/auth/authSlice';
-import Loader from '../../Component/layout/loader/Loader';
-import PasswordInput from '../../Component/layout/passwordInput/PasswordInput';
+import Loader from '../../component/layout/loader/Loader';
+import PasswordInput from '../../component/layout/passwordInput/PasswordInput';
 
 
 

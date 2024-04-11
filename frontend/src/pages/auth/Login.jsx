@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from "./auth.module.scss";
 import { Link, useNavigate } from 'react-router-dom';
-import Card from '../../Component/Card/Card';
+import Card from '../../component/Card/Card';
 import { toast } from 'react-toastify';
 import { validateEmail } from '../../utils/Index';
-import Loader from '../../Component/layout/loader/Loader';
+import Loader from '../../component/layout/loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { RESET_AUTH, login } from '../../redux/features/auth/authSlice';
-import PasswordInput from "../../Component/layout/passwordInput/PasswordInput"
+import PasswordInput from "../../component/layout/passwordInput/PasswordInput"
 
 
 

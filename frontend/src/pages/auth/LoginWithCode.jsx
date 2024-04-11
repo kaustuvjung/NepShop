@@ -3,8 +3,8 @@ import { GrInsecure } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Card from '../../Component/Card/Card';
-import Loader from '../../Component/layout/loader/Loader';
+import Card from '../../component/Card/Card';
+import Loader from '../../component/layout/loader/Loader';
 import styles from "./auth.module.scss";
 import { RESET_AUTH, loginWithCode, sendLoginCode } from "../../redux/features/auth/authSlice";
 

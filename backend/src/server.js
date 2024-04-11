@@ -1,4 +1,3 @@
-const app = require('./app');
 require('dotenv').config();
 const express = require('express');
 const cors = require("cors");
@@ -7,9 +6,36 @@ const userRoute = require("./routes/userRoutes")
 const productRoute =require('./routes/productRoutes')
 const errorHandler = require("./middlewares/errorMiddleware");
 const connectDB = require('./db/database');
+const path = require("path");
+
+const app = express();
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({extended: false}));
+app.use(
+    cors({
+        origin: ["http://localhost:5173", 
+        "http://NepShop.vercel.app"], 
+        credentials : true,
+    })
+);
+
+// Route Imports
+app.use("/api/v1/user", userRoute);
+app.use('/api/v1/product', productRoute);
+
+app.get("/",(req, res)=>{
+    res.send("Home Page");
+})
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
 
 
+
+// Error Middleware 
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

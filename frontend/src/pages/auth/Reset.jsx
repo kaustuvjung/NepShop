@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { MdPassword } from "react-icons/md";
 import styles from "./auth.module.scss";
-import PasswordInput from "../../Component/layout/passwordInput/PasswordInput";
+import PasswordInput from "../../component/layout/passwordInput/PasswordInput";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, resetPassword } from "../../redux/features/auth/authSlice";
-import Card from '../../Component/Card/Card';
-import Loader from '../../Component/layout/loader/Loader';
+import Card from '../../component/Card/Card';
+import Loader from '../../component/layout/loader/Loader';
 
 const initialState = {
     password: "",

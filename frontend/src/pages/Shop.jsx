@@ -1,8 +1,8 @@
     import React from 'react'
-    import Hero from '../Component/Product/Hero/Hero'
-import Popular from '../Component/Product/Popular/Popular'
-import Offers from '../Component/Offers/Offers'
-import NewCollection from '../Component/Product/NewCollection/NewCollection'
+    import Hero from '../component/Product/Hero/Hero'
+import Popular from '../component/Product/Popular/Popular'
+import Offers from '../component/Offers/Offers'
+import NewCollection from '../component/Product/NewCollection/NewCollection'
 
     const Shop = () => {
     return (

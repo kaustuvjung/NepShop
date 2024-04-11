@@ -5,8 +5,8 @@ import styles from "./auth.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_AUTH, forgotPassword } from "../../redux/features/auth/authSlice";
 import { validateEmail } from '../../utils/Index';
-import Card from '../../Component/Card/Card';
-import Loader from '../../Component/layout/loader/Loader';
+import Card from '../../component/Card/Card';
+import Loader from '../../component/layout/loader/Loader';
 
 const Forgot = () => {
   const [email, setEmail] = useState("");

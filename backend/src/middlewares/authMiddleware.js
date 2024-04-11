@@ -28,6 +28,7 @@ const protect = asyncHandler( async ( req, res, next) => {
         throw new Error("Mot authorized, please Login");    
     }
 });
+
 const verifiedOnly = asyncHandler(async (req, res, next) => {
     if (req.user && req.user.isVerified) {
       next();

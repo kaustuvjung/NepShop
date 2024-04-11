@@ -2,12 +2,12 @@ import React, {  useState, useEffect, useLayoutEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import "./Profile.scss";
-import PageMenu from "../../Component/pageMenu/PageMenu";
-import Notification from "../../Component/notification/Notification";
-import Card from '../../Component/Card/Card';
+import PageMenu from "../../component/pageMenu/PageMenu";
+import Notification from "../../component/notification/Notification";
+import Card from '../../component/Card/Card';
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import { getUser, selectUser, updateUser } from "../../redux/features/auth/authSlice";
-import Loader from "../../Component/layout/loader/Loader";
+import Loader from "../../component/layout/loader/Loader";
 import { toast } from "react-toastify";
 import { shortenText } from "../../utils/Index";
 

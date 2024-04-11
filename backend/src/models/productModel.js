@@ -18,22 +18,17 @@ const productSchema = new mongoose.Schema({
         type:Number,
         default:0
     },
-    images:[{
-        public_id:{
-            type:String,
-            required:true
-        },
-        url:{
-            type:String,
-            required:true
-        }
-       }     
-    ],
+
+    image: {
+        type: Object,
+        default: {},
+      },
+  
     category:{
         type:String,
         required:[true, "please Enter Product category"]
     },
-    Stock:{
+    stock:{
         type:Number,
         required:[true, "Please Enter product Stock"],
         maxLength:[4, "stock value cannot exceed the 4 digit number"],

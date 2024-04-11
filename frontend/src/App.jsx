@@ -1,8 +1,8 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import './index.css'
-import Header from "./Component/layout/header/Header";
-import Fotter from './Component/layout/footer/Fotter';
-import Home from "./Component/home/Home";
+import Header from "./component/layout/header/Header";
+import Fotter from './component/layout/footer/Fotter';
+import Home from "./component/home/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import axios from "axios";

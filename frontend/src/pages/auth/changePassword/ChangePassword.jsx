@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './ChangePassword.scss'
-import PasswordInput from '../../../Component/layout/passwordInput/PasswordInput';
+import PasswordInput from '../../../component/layout/passwordInput/PasswordInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Spinner } from '../../../Component/layout/loader/Loader';
-import PageMenu from '../../../Component/pageMenu/PageMenu';
-import Card from '../../../Component/Card/Card';
+import { Spinner } from '../../../component/layout/loader/Loader';
+import PageMenu from '../../../component/pageMenu/PageMenu';
+import Card from '../../../component/Card/Card';
 import { RESET_AUTH, changePassword, logout } from '../../../redux/features/auth/authSlice';
 import { sendAutomatedEmail } from '../../../redux/features/email/emailSlice';
 
