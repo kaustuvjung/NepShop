@@ -4,7 +4,8 @@ const {
     createProduct, 
     updateProduct,
     deleteProduct, 
-    getProductDetails 
+    getProductDetails, 
+    createPrtoductReview
 } = require("../controllers/productController");
 const { upload } = require("../utils/fileUpload");
 const { protect, adminOnly } = require("../middlewares/authMiddleware");
@@ -18,6 +19,9 @@ router.patch("/admin/product/:id",protect, adminOnly, upload.single("image"), up
 router.delete("/admin/product/:id", protect, adminOnly, deleteProduct);
 
 router.get("/product/:id", getProductDetails);
+router.patch("/review",protect, createPrtoductReview);
+
+
 
 
 module.exports = router;
