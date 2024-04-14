@@ -4,7 +4,6 @@ import PasswordInput from '../../../component/layout/passwordInput/PasswordInput
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Spinner } from '../../../component/layout/loader/Loader';
-import PageMenu from '../../../component/pageMenu/PageMenu';
 import Card from '../../../component/Card/Card';
 import { RESET_AUTH, changePassword, logout } from '../../../redux/features/auth/authSlice';
 import { sendAutomatedEmail } from '../../../redux/features/email/emailSlice';
@@ -41,16 +40,15 @@ const ChangePassword = () => {
     if (password !== cPassword) {
       return toast.error("Passwords do not match");
     }
-
     const userData = {
       oldPassword,
       password,
     };
     // Add logic to dispatch password update action
     const emailData = {
-      subject: "Password Changed - AUTH:Z",
+      subject: "Password Changed - NepShop",
       send_to: user.email,
-      reply_to: "noreply@zino",
+      reply_to: "noreply@NepShop",
       template: "changePassword",
       url: "/forgot",
     };
@@ -67,9 +65,9 @@ const ChangePassword = () => {
     <>
       <section>
         <div className=" container">
-          <PageMenu />
-          <h2 className="--flex-center mt-4 text-red">Change Password</h2>
+       
           <div className="--flex-center change-password">
+         
             <Card cardClass={"card"}>
               <>
                 <form onSubmit={updatePassword}>

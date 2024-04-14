@@ -42,11 +42,7 @@ const Slider = () => {
             <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
             <AiOutlineArrowRight className="arrow next" onClick={nextSlide} />
                 </div>
-            
-           
 
-
-            
             {sliderData.map((slide, index) => {
                 const { image, heading, desc } = slide;
 

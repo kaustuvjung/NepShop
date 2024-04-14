@@ -4,9 +4,11 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/userRoutes")
 const productRoute =require('./routes/productRoutes')
+const order = require('./routes/orderRoute');
 const errorHandler = require("./middlewares/errorMiddleware");
 const connectDB = require('./db/database');
 const path = require("path");
+
 
 const app = express();
 
@@ -24,6 +26,8 @@ app.use(
 // Route Imports
 app.use("/api/v1/user", userRoute);
 app.use('/api/v1/product', productRoute);
+app.use("/api/v1/", order);
+
 
 app.get("/",(req, res)=>{
     res.send("Home Page");

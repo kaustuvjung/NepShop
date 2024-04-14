@@ -14,7 +14,6 @@ import { getLoginStatus, getUser, selectIsLoggedIn, selectUser } from "./redux/f
 import Profile from "./pages/profile/Profile";
 import Shop from "./pages/Shop";
 import ShopCategory from "./pages/ShopCategory";
-
 import Cart from "./pages/Cart";
 import Forgot from "./pages/auth/Forgot";
 import ChangePassword from "./pages/auth/changePassword/ChangePassword";
@@ -24,8 +23,10 @@ import LoginWithCode from "./pages/auth/LoginWithCode";
 import men_banner from '../src/assets/banner_mens.png';
 import women_banner from '../src/assets/banner_women.png';
 import kid_banner from '../src/assets/banner_kids.png';
-import Product from "./pages/Product";
-
+import Product from "./component/Product/Product";
+import Search from "./component/Product/Search";
+import UpdateProfile from "./pages/profile/UpdateProfile";
+import ProductDetails from "./component/Product/ProductDetails"
 const App = () => {
   const dispatch = useDispatch();
   // apply every Http request we made
@@ -41,6 +42,7 @@ const App = () => {
   }, [dispatch, isLoggedIn, user]);
 
 
+  
   return (
     <>
 
@@ -49,15 +51,28 @@ const App = () => {
     <Header />
     <Routes>
       <Route path="/" element={<Home/>}  />
+      
       <Route path="/shop" element={<Shop /> } />
+
+       <Route path="/products" element={<Product/> } >
+        <Route path=":keyword" element={<Product/>}/>
+      </Route>
+      <Route path="/product/:id" element={<ProductDetails /> } />
+      
+      <Route path="/search" element={<Search /> } />
+        
+
+
       <Route path="/mens" element={<ShopCategory banner={men_banner} category ="men" /> } />
       <Route path="/womens" element={<ShopCategory banner={women_banner} category ="women" /> } />
       <Route path="/kids" element={<ShopCategory banner ={kid_banner} category ="kid" /> } />
 
-      <Route path="/product" element={<Product/> } >
-        <Route path=":productId" element={<Product/>}/>
-      </Route>
+     
 
+
+      <Route path="/updateUser" element={<UpdateProfile /> } />
+
+   
       <Route path="/cart" element={<Cart/> } />
       <Route path="/login" element={<Login/>}  />
       <Route path="/register" element={<Register/>}  />
@@ -67,6 +82,7 @@ const App = () => {
       <Route path="/loginWithCode/:email" element={<LoginWithCode/>}  />
       <Route path="/verify/:verificationToken" element={<Verify/>}  />
       <Route path="/changePassword" element={<ChangePassword/>}  />
+
 
 
       

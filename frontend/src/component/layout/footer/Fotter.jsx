@@ -7,7 +7,7 @@ import whatsapp_icon from '../../../assets/whatsapp_icon.png'
 
 const Fotter = () => {
   return (
-    <div class="fotter px-6 py-3 mx-auto bg-blue-100 bg-opacity-80 font-sans dark:bg-gray-900">
+    <div className="fotter px-6 py-3 mx-auto bg-blue-100 bg-opacity-80 font-sans dark:bg-gray-900">
       <div className="fotter-logo">
         <img src={LogoImg} alt="" />
       </div>  

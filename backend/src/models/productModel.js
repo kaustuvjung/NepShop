@@ -10,11 +10,11 @@ const productSchema = new mongoose.Schema({
         required:[true, "Please Enter the product Description"]
     },
     price:{
-        type:String,
+        type:Number,
         required:[true, "Please Enter the product Price"],
         maxLength:[8, "Price cannot exceed *figure number"]
     },
-    rating:{
+    ratings:{
         type:Number,
         default:0
     },
@@ -28,7 +28,7 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:[true, "please Enter Product category"]
     },
-    stock:{
+    Stock:{
         type:Number,
         required:[true, "Please Enter product Stock"],
         maxLength:[4, "stock value cannot exceed the 4 digit number"],

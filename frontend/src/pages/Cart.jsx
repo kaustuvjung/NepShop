@@ -5,7 +5,6 @@ const Cart = () => {
   return (
     <div className='max-w-full overflow-x-hidden'>
       <CartItems />
-
     </div>
   )
 }

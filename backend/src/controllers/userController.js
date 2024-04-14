@@ -336,11 +336,12 @@ const updateUser = asyncHandler(async(req, res) =>{
     const user = await User.findById(req.user._id);
     if(user){
      const { name, email,phone, photo, role, isVerified } = user;
-     
+
      user.name = req.body.name || name,
      user.email = email,
      user.phone = req.body.phone || phone,
      user.address = req.body.address || address,
+     user.photo = req.body.photo || photo;
      user.photo = req.body.photo|| photo
      const updatedUser = await user.save();
      
@@ -351,6 +352,7 @@ const updateUser = asyncHandler(async(req, res) =>{
          phone:updatedUser.phone, 
          photo:updatedUser.photo, 
          role:updatedUser.role, 
+         address:updatedUser.address,
          isVerified:updatedUser.isVerified, 
      });
         

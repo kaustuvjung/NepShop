@@ -1,14 +1,10 @@
 import React, { useContext } from 'react'
 import './Css/ShopCategory.css'
-import { ShopContext } from '../context/ShopContext'
 import dropdown_icon from '../assets/dropdown_icon.png'
 import Item from '../component/Items/Item'
 
 const ShopCategory = (props) => {
-  const {all_product} = useContext(ShopContext)
-  if (!all_product) {
-    return null; // or return a loading indicator or placeholder
-  }
+
   return (
     <div className="shop-category">
       <img className='shopcategory-banner' src={props.banner} alt="" />
