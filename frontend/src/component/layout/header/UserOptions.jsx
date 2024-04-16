@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import "./Header.css";
+// import './userOptions.css'
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
@@ -16,10 +17,12 @@ import ListAltOutlined from '@mui/icons-material/ListAltOutlined';
 import ExitToApp from '@mui/icons-material/ExitToApp';
 import { useNavigate } from 'react-router-dom';
 import { Backdrop } from '@mui/material';
-// import Dashboard from '@mui/icons-material/Dashboard';
+
 
 const UserOptions = () => {
+
   const [open , setOpen] = useState(false);
+  const { cartItems} = useSelector(state => state.cart)
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,6 +30,9 @@ const UserOptions = () => {
   const options = [
     { icon: <ListAltOutlined />, name: 'orders',func: order },
     { icon: <PersonIcon/>, name: 'Account',func: account },
+    { icon: <ShoppingCartIcon style={{color: cartItems.length > 0 ? "tomato" :  " unset"}} />, 
+      name: `Cart(${cartItems.length})`,
+      func: cart },
     { icon: <ExitToApp />, name: 'logOut', func: logoutUser },
   ];
   
@@ -39,15 +45,21 @@ const UserOptions = () => {
   }
 
 function dashboard() {
-  navigate("/dashboard")
+  navigate("admin/dashboard")
 }
 
 function order() {
   navigate("/orders")
 }
 
+function cart() {
+  navigate("/cart")
+ 
+}
+
 function account() {
   navigate("/profile")
+ 
 }
 
 async function logoutUser() {
@@ -55,8 +67,9 @@ async function logoutUser() {
   await dispatch(logout());
   navigate("/login");
 }
-
-  
+{/* <div className='username'>  
+ </div>
+   */}
 
   return (
     <Fragment>
@@ -85,7 +98,10 @@ async function logoutUser() {
           key={item.name}
           icon={item.icon} 
           tooltipTitle={item.name} 
-          onClick={item.func}/>
+          onClick={item.func}
+          tooltipOpen={window.innerWidth <= 600 ? true : false}
+          />
+          
 
       ))}
       </SpeedDial>

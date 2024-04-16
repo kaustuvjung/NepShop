@@ -56,16 +56,17 @@ const Login = () => {
      
  };
 
+ const redirect = new URLSearchParams(location.search).get("redirect") || "/";
   useEffect(() => {
     if(isSuccess && isLoggedIn){
-      navigate("/");
+      navigate(redirect);
     }
     if(isError && twoFactor){
       dispatch(sendLoginCode(email))
       navigate(`/loginWithCode/${email}`)
     }
     dispatch(RESET_AUTH());
-  },[isLoggedIn, isSuccess, dispatch, navigate, isError, twoFactor,email]);
+  },[isLoggedIn, isSuccess, dispatch, navigate, isError, twoFactor,redirect, email]);
 
 
 

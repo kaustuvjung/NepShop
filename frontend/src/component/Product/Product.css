@@ -22,6 +22,7 @@
   margin: 6vmax;
 }
 
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -36,6 +37,8 @@
   transition: all 0.3s;
   cursor: pointer;
 }
+
+
 .page-item:first-child {
   border-radius: 5px 0 0 5px;
 }
@@ -43,6 +46,7 @@
 .page-item:last-child {
   border-radius: 0 5px 5px 0;
 }
+
 .page-link {
   text-decoration: none;
   font: 300 0.7vmax "Roboto";
@@ -50,12 +54,13 @@
   transition: all 0.3s;
 }
 
+
 .page-item:hover {
   background-color: rgb(230, 230, 230);
 }
 
 .page-item:hover .page-link {
-  color: rgb(0, 0, 0);
+  color: rgb(92, 47, 165);
 }
 
 .pageItemActive {
@@ -63,34 +68,53 @@
 }
 
 .pageLinkActive {
-  color: white;
+  color: rgb(23, 16, 16);
 }
 
 .filterBox {
   width: 10vmax;
   position: absolute;
-  top: 10vmax;
-  left: 4vmax;
+  top: 15vmax;
+  left: 2vmax;
+  padding: 3px;
+  margin: 2px;
+  
 }
 
 .categoryBox {
   padding: 0%;
+  border: 1px solid rgba(0, 0, 0, 0.329);
 }
 
 .category-link {
   list-style: none;
-  color: rgba(0, 0, 0, 0.61);
-  font: 400 0.8vmax "Roboto";
-  margin: 0.4vmax;
+  color: rgba(63, 29, 29, 0.61);
+  font: 600 1.2vmax "Roboto";
+  margin: 0.8vmax;
   cursor: pointer;
   transition: all 0.5s;
 }
 .category-link:hover {
-  color: tomato;
+  color: rgb(184, 35, 9);
 }
 
 .filterBox > fieldset {
   border: 1px solid rgba(0, 0, 0, 0.329);
+}
+
+
+@media screen and (max-width: 800px) {
+  .filterBox {
+    margin: auto;
+  }
+  .page-link {
+    font: 500 1.7vmax "Roboto";
+  }
+
+.category-link {
+  font: 600 1.8vmax "Roboto";
+}
+
 }
 
 @media screen and (max-width: 600px) {
@@ -99,11 +123,12 @@
     position: static;
     margin: auto;
   }
-
   .page-link {
     font: 300 1.7vmax "Roboto";
   }
-  .category-link {
-    font: 400 1.8vmax "Roboto";
-  }
+
+.category-link {
+  font: 600 1.8vmax "Roboto";
+}
+
 }

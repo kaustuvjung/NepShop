@@ -1,0 +1,99 @@
+.speedDial {
+    position: fixed;
+    right: 4.5vmax;
+    top: 1vmax;
+  }
+  
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+  }
+
+  .username{
+    position: absolute;
+    right: 8vmax;
+    top: 2.3vmax;
+  }
+
+/* 
+
+@media(max-width:1280px){
+  .speedDial {
+    position: absolute;
+    right: 4.5vmax;
+    top: 1vmax;
+  }
+  
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+  }
+
+  .username{
+    position: absolute;
+    right: 8vmax;
+    top: 2.3vmax;
+  }
+}
+@media(max-width:1024px){
+  .speedDial {
+    position: absolute;
+    right: 4.5vmax;
+    top: 1vmax;
+  }
+  
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+  }
+
+  .username{
+    position: absolute;
+    right: 8vmax;
+    top: 2.3vmax;
+  }
+}
+@media(max-width:800px){
+  .speedDial {
+    position: absolute;
+    right: 4vmax;
+    top: 1vmax;
+  }
+  
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 80%;
+  }
+
+  .username{
+    position: absolute;
+    right: 12vmax;
+    top: 3.2vmax;
+  }
+}
+@media(max-width:500px){
+  .speedDial {
+    position: fixed;
+    right: 4.5vmax;
+    top: 1vmax;
+  }
+  
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+  }
+
+  .username{
+    position: absolute;
+    right: 8vmax;
+    top: 2.3vmax;
+  }
+  
+}
+
+   */

@@ -67,15 +67,36 @@ const getAllProducts = asyncHandler(async(req,res,)=>{
     const apifeature = new Apifeatures(Product.find(),req.query)
     .search()
     .filter()
-    .pagination(resultPerPage);
-    const products = await apifeature.query;
+    // .pagination(resultPerPage);
+
+
+    
+    let products = await apifeature.query;
+    let filteredProductsCount = products.length;
+    apifeature.pagination(resultPerPage);
+
+    // console.log('Initial values:');
+    // console.log('productsCount:', productsCount);
+    // console.log('resultPerPage:', resultPerPage);
+    // console.log('filteredProductsCount:', filteredProductsCount);
+
     res.status(200).json({
+        
         success:true,
         products,
         productsCount,
         resultPerPage,
+        filteredProductsCount,
     })
 });
+
+
+
+
+
+
+
+
 
 
 

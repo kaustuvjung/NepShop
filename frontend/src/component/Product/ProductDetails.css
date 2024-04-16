@@ -161,6 +161,19 @@
     transform: scale(1.1);
   }
 
+  .submitDialog{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .submitDialogTextArea{
+    border: 2px solid rgba(0, 0, 0, 0.082);
+    margin: 1vmax 0;
+    outline: none;
+    padding: 1.5rem;
+    font: 500 1rem "Roboto";
+  } 
+
   .reviewsHeading {
     color: #000000be;
     font: 500 1.4vmax "Roboto";
@@ -295,9 +308,6 @@
 
   
 }
-
-
-
 
 
 

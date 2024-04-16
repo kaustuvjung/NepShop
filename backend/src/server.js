@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/userRoutes")
 const productRoute =require('./routes/productRoutes')
 const order = require('./routes/orderRoute');
+const payment = require('./routes/paymentRoute');
 const errorHandler = require("./middlewares/errorMiddleware");
 const connectDB = require('./db/database');
 const path = require("path");
@@ -27,6 +28,7 @@ app.use(
 app.use("/api/v1/user", userRoute);
 app.use('/api/v1/product', productRoute);
 app.use("/api/v1/", order);
+app.use("/api/v1/", payment);
 
 
 app.get("/",(req, res)=>{

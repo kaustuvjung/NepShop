@@ -6,7 +6,7 @@ import { RESET_AUTH, logout } from '../../../redux/features/auth/authSlice';
 import ShowOnLogin, { ShowOnLogout } from '../../protect/hiddenLink';
 import { UserName } from '../../../pages/profile/Profile';
 import cart_icon from '../../../assets/cart_icon.png';
-import { ShopContext } from '../../../context/ShopContext';
+
 import Search from '../../Product/Search';
 import UserOptions from './UserOptions';
 
@@ -28,7 +28,7 @@ export default function Header() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {getTotalCartItems} = useContext(ShopContext);
+
 
   const logoutUser = async () =>{
     await dispatch(RESET_AUTH());
@@ -46,18 +46,10 @@ export default function Header() {
         <div className="hidden lg:flex lg:gap-x-12 md:flex md:gap-x-10 sm:flex sm:gap-x-8">
           <div  className="relative">
           </div>
-          <NavLink to={"/shop"} className={`text-sm font-semibold leading-6 text-white " ${activeLink}`}>
-          Shop
+          <NavLink to={"/products"} className={`text-sm font-semibold leading-6 text-white " ${activeLink}`}>
+          Product
           </NavLink>
-          <NavLink to={"/mens"} className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
-            Men
-          </NavLink>
-          <NavLink to={"/womens"} className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
-            Women
-          </NavLink>
-          <NavLink to={"/kids"} className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
-           Kids
-          </NavLink>
+        
           {/* <Search/> */}
         </div>
         <section className='hidden lg:flex lg:flex-1 lg:justify-between  md:flex md:flex-1 md:justify-between sm:flex sm:flex-1 sm:justify-between'>
@@ -66,6 +58,7 @@ export default function Header() {
           <NavLink to={"/login"} className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
             Login
           </NavLink>
+          
           </div>
           </ShowOnLogout>
           <ShowOnLogout>
@@ -74,13 +67,15 @@ export default function Header() {
             Register
           </NavLink>
         </div>
+
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end  md:flex md:flex-1 md:justify-end sm:flex sm:flex-1 sm:justify-end">
+          <UserOptions/>
+          
+        </div>  
         </ShowOnLogout>
         </section>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end md:flex md:flex-1 md:justify-end sm:flex sm:flex-1 sm:justify-end">
-           <NavLink to={"/cart" }className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
-             Cart
-            <div>{getTotalCartItems()}</div>
-          </NavLink>
+          
         </div>          
         <ShowOnLogin>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end  md:flex md:flex-1 md:justify-end sm:flex sm:flex-1 sm:justify-end">

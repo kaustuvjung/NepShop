@@ -33,8 +33,9 @@ const newOrder = asyncHandler(async(req,res)=>{
       }); 
 });
 
+
 // getSingleOrder
-const getSingleOrder = asyncHandler(async(req,res)=>{
+const getSingleOrder = asyncHandler(async(req,res, next)=>{
   const order = await Order.findById(req.params.id).populate(
     "user",
     "name email"
@@ -82,7 +83,7 @@ const getAllOrders = asyncHandler(async(req,res)=>{
 
 
 // update Order Status -- Admin
-const updateOrder = asyncHandler(async(req,res)=>{
+const updateOrder = asyncHandler(async(req,res, next)=>{
   const order = await Order.findById(req.params.id);
 
   if (!order) {
@@ -141,6 +142,7 @@ const deleteOrder = asyncHandler(async(req,res)=>{
 
 module.exports = {
     newOrder,
+
     getSingleOrder,
     myOrders,
     getAllOrders,
