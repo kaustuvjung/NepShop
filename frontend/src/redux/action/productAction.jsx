@@ -82,6 +82,7 @@ export const getProductDetails = (id) => async(dispatch) =>{
 
 // create new products
 export const createProduct= (productData) => async(dispatch) =>{
+    console.log(productData);
     try {
         dispatch({type:  NEW_PRODUCT_REQUEST});
 
@@ -89,11 +90,10 @@ export const createProduct= (productData) => async(dispatch) =>{
             headers: { "Content-Type": "application/json" },
           };
       
-        const { data } = await axios.post(API_URL + "admin/product/new" , productData, config);
+        const { data } = await axios.post(API_URL + "admin/product/new" , productData);
 
         console.log(data);
-
-
+    
         dispatch({
             type: NEW_PRODUCT_SUCCESS,
             payload: data,

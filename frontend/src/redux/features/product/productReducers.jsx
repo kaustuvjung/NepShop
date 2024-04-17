@@ -54,7 +54,7 @@ export const newProductReducer = (state = { product: {}  }, action) => {
       case  NEW_PRODUCT_RESET:
         return {
           ...state,
-          success: true,
+          success: false,
         };
 
     case CLEAR_ERRORS:

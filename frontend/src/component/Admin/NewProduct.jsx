@@ -14,13 +14,9 @@ import { NEW_PRODUCT_RESET } from '../../constants/productConstant';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-
 const NewProduct = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    
-
-
+  const dispatch = useDispatch();
+ const navigate = useNavigate();
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
   const [name, setName] = useState("");
@@ -28,7 +24,7 @@ const NewProduct = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [Stock, setStock] = useState(0);
-  const [image, setImages] = useState([]);
+  const [image, setImage] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
@@ -40,7 +36,6 @@ const NewProduct = () => {
     "womens",
     "kids",
 ];
-
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -52,14 +47,13 @@ const NewProduct = () => {
       navigate("/admin/dashboard");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, navigate,success]);
-
+  }, [dispatch, navigate, error, success]);
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
-    
+
     myForm.set("name", name);
     myForm.set("price", price);
     myForm.set("description", description);
@@ -67,40 +61,15 @@ const NewProduct = () => {
     myForm.set("Stock", Stock);
     myForm.append("image", image);
 
-    // images.forEach((image) => {
-    //   myForm.append("images", image);
-    // });
-
-   
-  
+    
     dispatch(createProduct(myForm));
-};
-
-
-  const createProductImagesChange = (e) => {
-    // const files = Array.from(e.target.files);
-
-    setImages([]);
-    setImagesPreview([]);
-    setImages(e.target.files[0]);
-    setImagesPreview(URL.createObjectURL(e.target.files[0]));
-
-
-    // files.forEach((file) => {
-    //   const reader = new FileReader();
-
-    //   reader.onload = () => {
-    //     if (reader.readyState === 2) {
-    //       setImagesPreview((old) => [...old, reader.result]);
-    //       setImages((old) => [...old, reader.result]);
-    //     }
-    //   };
-
-    //   reader.readAsDataURL(file);
-    // });
   };
 
-
+  const createProductImagesChange = (e) => {
+    setImage(e.target.files[0]);
+    setImagesPreview(URL.createObjectURL(e.target.files[0]));
+   
+  };
 
   return (
     <Fragment>
@@ -175,15 +144,12 @@ const NewProduct = () => {
                 name="avatar"
                 accept="image/*"
                 onChange={createProductImagesChange}
-                multiple
+                
               />
             </div>
 
             <div id="createProductFormImage">
-              {imagesPreview &&  <img src = {imagesPreview} alt= "product Review"/>}
-              {/* {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
-              ))} */}
+            {imagesPreview &&  <img src = {imagesPreview} alt= "product Review"/>}
             </div>
 
             <Button
@@ -200,4 +166,4 @@ const NewProduct = () => {
   );
 };
 
-export default NewProduct
+export default NewProduct;

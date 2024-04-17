@@ -34,9 +34,9 @@ const UpdateProduct = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [Stock, setStock] = useState(0);
-  const [images, setImages] = useState([]);
-  const [oldImages, setOldImages] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState([]);
+  const [image, setImage] = useState("");
+  const [oldImages, setOldImages] = useState("");
+  const [imagesPreview, setImagesPreview] = useState("");
 
   const categories = [
  
@@ -61,7 +61,7 @@ const UpdateProduct = () => {
       setPrice(product.price);
       setCategory(product.category);
       setStock(product.Stock);
-      setOldImages(product.images);
+      setOldImages(product.image);
     }
     if (error) {
       toast.error(error);
@@ -80,7 +80,7 @@ const UpdateProduct = () => {
     }
   }, [
     dispatch,
-    alert,
+    
     error,
    navigate,
     isUpdated,
@@ -93,38 +93,20 @@ const UpdateProduct = () => {
     e.preventDefault();
 
     const myForm = new FormData();
-
     myForm.set("name", name);
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
     myForm.set("Stock", Stock);
-
-    images.forEach((image) => {
-      myForm.append("images", image);
-    });
+   
+     myForm.append("image", image);
+    
     dispatch(updateProduct(productId, myForm));
   };
 
   const updateProductImagesChange = (e) => {
-    // const files = Array.from history,(e.target.files);
-
-    setImages([]);
-    setImagesPreview([]);
-    setOldImages([]);
-
-    files.forEach((file) => {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
-        }
-      };
-
-      reader.readAsDataURL(file);
-    });
+    setImage(e.target.files[0]);
+    setImagesPreview(URL.createObjectURL(e.target.files[0]));
   };
 
   return (
@@ -210,16 +192,12 @@ const UpdateProduct = () => {
             </div>
 
             <div id="createProductFormImage">
-              {oldImages &&
-                oldImages.map((image, index) => (
-                  <img key={index} src={image.url} alt="Old Product Preview" />
-                ))}
+            {imagesPreview &&  <img src = {imagesPreview} alt= "product Review"/>}
+             
             </div>
 
             <div id="createProductFormImage">
-              {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
-              ))}
+              
             </div>
 
             <Button

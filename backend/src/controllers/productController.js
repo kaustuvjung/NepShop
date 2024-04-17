@@ -41,6 +41,7 @@ const createProduct = asyncHandler(async(req, res, next) =>{
         
 
     }
+    console.log(fileData);
 
     const product = await Product.create({
         user: req.user.id,
