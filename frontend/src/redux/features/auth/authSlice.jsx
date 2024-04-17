@@ -273,6 +273,35 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.message = "";
     },
+    Calculate_Verified_User(state, action){
+        const array = [];
+        state.users.map((user) =>{
+          const { isVerified } = user;
+          return array.push(isVerified)
+        })
+        let count = 0;
+        array.forEach((item) =>{
+          if(item === true){
+            count += 1;
+          }
+        })
+        state.verifiedUsers = count;
+      },
+      Calculate_Suspended_User(state, action){
+        const array = [];
+        state.users.map((user) =>{
+          const { role } = user;
+          return array.push(role)
+        })
+        let count = 0;
+        array.forEach((item) =>{
+          if(item === "suspended"){
+            count += 1;
+          }
+        })
+        state.suspendedUsers = count;
+      },
+
   },
   
   extraReducers: (builder) => {
@@ -581,7 +610,7 @@ const authSlice = createSlice({
 
 
 
-export const {RESET_AUTH} = authSlice.actions;
+export const { RESET_AUTH, Calculate_Verified_User,Calculate_Suspended_User} = authSlice.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectUser = (state) => state.auth.user;

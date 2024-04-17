@@ -36,7 +36,12 @@ import CashOnDelivery from "./component/Cart/CashOnDelivery";
 import OrderDetails from "./component/Order/OrderDetails";
 import Dashboard from './component/Admin/Dashboard';
 import Layout from "./component/layout/Layout";
-
+import ProductList from "./component/Admin/ProductList";
+import NewProduct from "./component/Admin/NewProduct";
+import UpdateProduct from "./component/Admin/UpdateProduct";
+import UserList from "./component/Admin/UserList";
+import OrderList from './component/Admin/OrderList';
+import OrderProcess from "./component/Admin/OrderProcess";
 const App = () => {
 
   const dispatch = useDispatch();
@@ -197,13 +202,16 @@ const App = () => {
            }
         />
 
-      <Route path="/admin/dashboard"
-      element={
+      <Route path="/admin/dashboard" element={ <Dashboard />   } />
+      <Route path="/admin/products" element={ <ProductList />   } />
+      <Route path="/admin/product" element={ <NewProduct />   } />
 
-          <Dashboard />
-        
-      }
-   />
+      <Route path="/admin/product/:id" element={ <UpdateProduct />   } />
+      <Route path="/admin/orders" element={ <OrderList />   } />
+
+      <Route path="/admin/order/:id" element={ <OrderProcess />   } />
+     
+      <Route path="/admin/users" element={ <UserList />   } />
 
 
 

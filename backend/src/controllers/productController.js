@@ -9,6 +9,7 @@ const cloudinary = require("cloudinary").v2;
 // create Product ---Admin
 const createProduct = asyncHandler(async(req, res, next) =>{
     const {name , category, Stock, price, description} = req.body;
+    console.log(req.body);
 
    
     
@@ -90,14 +91,15 @@ const getAllProducts = asyncHandler(async(req,res,)=>{
     })
 });
 
-
-
-
-
-
-
-
-
+// get all Products Admin
+const getAdminProducts = asyncHandler(async(req,res, next)=>{
+    const products = await Product.find();
+    
+    res.status(200).json({
+        success:true,
+        products,       
+    });
+});
 
 
 // get  Products details
@@ -300,5 +302,6 @@ module.exports = {
     getProductDetails,
     createPrtoductReview,
     getProductReview,
-    deleteReview
+    deleteReview,
+    getAdminProducts,
 };

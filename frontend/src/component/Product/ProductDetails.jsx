@@ -19,6 +19,7 @@ const ProductDetails = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const {product, loading, error } =useSelector(state => state.productDetails);
+    console.log("product ,", product);
     const { success, error: reviewError } = useSelector((state) => state.newReview);
 
 

@@ -23,6 +23,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { getAdminProduct } from '../../redux/action/productAction';
 
 ChartJS.register(
   CategoryScale,
@@ -41,14 +42,33 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading, isLoggedIn, user } = useSelector((state) => state.auth);
+  const { isLoading, user } = useSelector((state) => state.auth);
+  const {  products} = useSelector((state) => state.products);
+  const { users, verifiedUsers, suspendedUsers } = useSelector(
+    (state) => state.auth
+  );
+  const { orders } = useSelector((state) => state.allOrders);
 
+
+
+
+  let OutOfStock = 0;
+  products && 
+  products.forEach((item) =>{
+    if(item.Stock === 0){
+      OutOfStock +=1;
+    }
+  });
 
   useEffect(() => {
     if(user === null){
         dispatch(getUser());
     }
+   
+  dispatch(getAdminProduct());
   }, [dispatch, user]);
+
+
 
 // const options = {
 //   responsive: true,
@@ -84,7 +104,7 @@ const Dashboard = () => {
         backgroundColor: ["#00A6B4", "#6800B4"],
         hoverBackgroundColor: ["#4B5000", "#35014F"],
         // data: [outOfStock, products.length - outOfStock],
-        data: [2, 10],
+        data: [OutOfStock, products.length - OutOfStock],
 
       },
     ],
@@ -93,26 +113,11 @@ const Dashboard = () => {
 
   
 
-  useEffect(() => {
-    // Redirect to login page if user is not logged in
-    if (!isLoading && !user) {
-      navigate("/login");
-    }
-  }, [isLoading, user, navigate]);
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (!user) {
-    return null; // or a loading component
-  }
-
-
-  if (isAdmin) {
-    // Admin dashboard
     return (
       <>
+      {isLoading && <Loader/>}
+      {!isLoading &&  isAdmin && (
+          <>
           <div className="dashboard">
           <MetaData title="Dashboard - Admin Panel" />
           <Sidebar />
@@ -128,15 +133,15 @@ const Dashboard = () => {
           <div className="dashboardSummaryBox2">
             <Link to="/admin/products">
               <p>Product</p>
-              {/* <p>{products && products.length}</p> */}
+              <p>{products && products.length}</p>
             </Link>
             <Link to="/admin/orders">
               <p>Orders</p>
-              {/* <p>{orders && orders.length}</p> */}
+              <p>{orders && orders.length}</p>
             </Link>
             <Link to="/admin/users">
               <p>Users</p>
-              {/* <p>{users && users.length}</p> */}
+              <p>{users && users.length}</p>
             </Link>
           </div>
             </div>
@@ -150,13 +155,13 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        </>
+        ) 
+        }
       </>
-    );}
-  // } else {
-  //   // Redirecting non-admin users to home page
-  //   navigate("/");
-  //   return null;
-  // }
-}
+    );
+  };
 
+
+    
 export default Dashboard
