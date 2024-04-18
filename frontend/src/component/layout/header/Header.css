@@ -1,5 +1,10 @@
+.search{
+  margin-left: 400px;
+
+}
+
 .speedDial {
-    position: absolute;
+    position: fixed;
     right: 4.5vmax;
     top: 1vmax;
   }

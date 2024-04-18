@@ -187,7 +187,7 @@ const sendLoginCode = asyncHandler(async(req, res) =>{
         userId: user._id,
         expiresAt: {$gt : Date.now()}
     });
-    console.log(userToken);
+  
     if(!userToken){
         res.status(404);
         throw new Error("Invalid or Expired Token, Please login again");
@@ -414,7 +414,7 @@ const upgradeUser = asyncHandler(async(req, res) =>{
 const sendAutomatedEmail = asyncHandler(async(req,res) =>{
    
     const { subject, send_to, reply_to, template, url } = req.body;
-    console.log("Received email data from frontend:", req.body);
+  
   
     if(!subject|| !send_to || !reply_to || !template){
         res.status(500);
@@ -467,7 +467,7 @@ const sendVerificationEmail = asyncHandler(async(req,res) =>{
 
     //create verification Token and save
     const verificationToken = crypto.randomBytes(32).toString("hex")+ user._id;
-    console.log(verificationToken);
+  
 
     // Hash Token and save
     const hashedToken = hashToken(verificationToken);
@@ -552,7 +552,7 @@ const forgotPassword = asyncHandler(async(req, res)=>{
 
     //create Reset Token and save
     const resetToken = crypto.randomBytes(32).toString("hex")+ user._id;
-    console.log("ResetTo0ken",resetToken);
+
 
     // Hash Token and save
     const hashedToken = hashToken(resetToken);

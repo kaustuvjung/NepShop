@@ -6,9 +6,10 @@ import { RESET_AUTH, logout } from '../../../redux/features/auth/authSlice';
 import ShowOnLogin, { ShowOnLogout } from '../../protect/hiddenLink';
 import { UserName } from '../../../pages/profile/Profile';
 import cart_icon from '../../../assets/cart_icon.png';
-
+import "./Header.css";
 import Search from '../../Product/Search';
 import UserOptions from './UserOptions';
+import AdminHeader from '../AdminHeader';
 
 
 const Logo = (
@@ -39,19 +40,25 @@ export default function Header() {
   
 
   return (
-    <header className="bg-gray-900 text-white font-sans">
+    <header className=" bg-gray-900 text-white font-sans">
       <nav className="mx-auto flex items-center justify-between p-6 lg:px md:px  sm:px max-w-7xl" aria-label="Global">
         <div className="flex lg:flex-1 md:flex-1 sm:flex-1" > {Logo}</div>
+
+        <div className='search'>
+        <Search/>
+        </div>
 
         <div className="hidden lg:flex lg:gap-x-12 md:flex md:gap-x-10 sm:flex sm:gap-x-8">
           <div  className="relative">
           </div>
           <NavLink to={"/products"} className={`text-sm font-semibold leading-6 text-white " ${activeLink}`}>
           Product
-          </NavLink>
-        
-          {/* <Search/> */}
+          </NavLink>           
         </div>
+
+        
+   
+       
         <section className='hidden lg:flex lg:flex-1 lg:justify-between  md:flex md:flex-1 md:justify-between sm:flex sm:flex-1 sm:justify-between'>
           <ShowOnLogout>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end md:flex md:flex-1 md:justify-end sm:flex sm:flex-1 sm:justify-end ">
@@ -61,12 +68,14 @@ export default function Header() {
           
           </div>
           </ShowOnLogout>
+          
           <ShowOnLogout>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end md:flex md:flex-1 md:justify-end sm:flex sm:flex-1 sm:justify-end ">
            <NavLink to={"/register" }className={`text-sm font-semibold leading-6 text-white ${activeLink}`}>
             Register
           </NavLink>
         </div>
+     
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end  md:flex md:flex-1 md:justify-end sm:flex sm:flex-1 sm:justify-end">
           <UserOptions/>

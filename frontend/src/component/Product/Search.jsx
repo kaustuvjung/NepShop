@@ -14,7 +14,6 @@ const Search = () => {
         navigate(searchUrl);           
       } else {
           navigate("/products")
-          console.log("notse");
       }
   };
     
@@ -34,3 +33,4 @@ const Search = () => {
 }
 
 export default Search
+

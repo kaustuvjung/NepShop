@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { validateEmail } from '../../utils/Index';
 import Loader from '../../component/layout/loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
-import { RESET_AUTH, login } from '../../redux/features/auth/authSlice';
+import { RESET_AUTH, login, sendLoginCode } from '../../redux/features/auth/authSlice';
 import PasswordInput from "../../component/layout/passwordInput/PasswordInput"
 
 
