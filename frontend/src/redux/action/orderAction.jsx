@@ -93,6 +93,7 @@ export const getAllOrders = ( ) => async(dispatch) =>{
 
 // Uopdate order
 export const updateOrder = (id, order ) => async(dispatch) =>{
+
     try {
         dispatch({type:UPDATE_ORDER_REQUEST});
         const config = {
@@ -100,9 +101,10 @@ export const updateOrder = (id, order ) => async(dispatch) =>{
               "Content-Type": "application/json",
             },
           };
-          const { data } = await axios.patch(`${API_URL}admin/orders/${id}`,
+          const { data } = await axios.put(`${API_URL}admin/orders/${id}`,
           order, 
           config );
+          console.log("Update Order Response:", data);
    
         dispatch({
             type: UPDATE_ORDER_SUCCESS,

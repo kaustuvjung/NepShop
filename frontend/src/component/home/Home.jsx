@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, getProduct } from '../../redux/action/productAction';
 import { toast } from 'react-toastify';
 import Loader from '../layout/loader/Loader';
+import Card from '../Card/Card';
 
 
 
@@ -46,11 +47,13 @@ const Home = () => {
       </a>
        </div>
         <h2 className="homeHeading">Features Products</h2>
+       <Card>
         <div className=" mx-auto container" id= "container">
         {products && products.map(product =>(
           <ProductCard key={product._id} product={product}/>
         ))}
         </div>
+        </Card>
 
         </Fragment>
       )}

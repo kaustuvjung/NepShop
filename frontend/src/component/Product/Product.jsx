@@ -74,6 +74,7 @@ const Product = () => {
             <ProductCard key={product._id}  product={product} />
           ))}
         </div>
+        
         <div className="filterBox">
                   <Typography>Price</Typography>
                   <Slider
@@ -97,6 +98,7 @@ const Product = () => {
                       </li>
                     ))}
                   </ul>
+
                   <fieldset>
                     <Typography component="legend">Ratings Above</Typography>
                     <Slider

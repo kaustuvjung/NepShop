@@ -34,8 +34,8 @@ const shippingCharges = subtotal > 1000 ? 0 : 200;
   
       sessionStorage.setItem("orderInfo", JSON.stringify(data));
   
-      navigate("/payment");
-      // navigate("/cashPayment")
+      // navigate("/payment");
+      navigate("/cashPayment")
     };
 
     const handleCashOnDelivery = () => {
@@ -120,7 +120,7 @@ const shippingCharges = subtotal > 1000 ? 0 : 200;
                   <span>Rs{totalPrice}</span>
                 </div>
     
-                <button onClick={proceedToPayment}>Proceed To Payment</button>
+                {/* <button onClick={proceedToPayment}>Proceed To Payment</button> */}
                 <button onClick={handleCashOnDelivery}>Cash on Delivery</button>
               </div>
             </div>

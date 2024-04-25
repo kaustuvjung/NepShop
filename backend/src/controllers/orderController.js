@@ -14,6 +14,7 @@ const newOrder = asyncHandler(async(req,res)=>{
         shippingPrice,
         totalPrice,
       } = req.body;
+     
     
       const order = await Order.create({
         shippingInfo,
@@ -26,6 +27,7 @@ const newOrder = asyncHandler(async(req,res)=>{
         paidAt: Date.now(),
         user: req.user._id,
       });
+   
     
       res.status(201).json({
         success: true,
@@ -85,6 +87,7 @@ const getAllOrders = asyncHandler(async(req,res)=>{
 // update Order Status -- Admin
 const updateOrder = asyncHandler(async(req,res, next)=>{
   const order = await Order.findById(req.params.id);
+  console.log(req.body);
 
   if (!order) {
     return next(new ErrorHandler("Order not found with this Id", 404));

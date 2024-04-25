@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import authReducer from "./auth/authSlice";
 import emailReducer from "./email/emailSlice";
 import filterReducer from './auth/filterSlice';
-import { newProductReducer, newReviewReducer, productDetailsReducer, productReducer, productsReducer } from './product/productReducers';
+import { newProductReducer, newReviewReducer, productDetailsReducer, productReducer, productReviewsReducer, productsReducer, reviewReducer } from './product/productReducers';
 import { cartReducers } from './cart/cartReducer';
 import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, ordersReducer } from './order/orderReducer';
 
@@ -21,6 +21,8 @@ const reducer ={
     product: productReducer,
     allOrders: allOrdersReducer,
     order: ordersReducer,
+    productReviews: productReviewsReducer,
+    review: reviewReducer,
 }
 
 let initialState = {

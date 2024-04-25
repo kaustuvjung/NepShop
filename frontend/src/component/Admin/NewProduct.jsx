@@ -1,22 +1,22 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import './newProduct.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, createProduct } from '../../redux/action/productAction';
-import MetaData from '../layout/MetaData';
-import Sidebar from './Sidebar';
-import { Button } from '@mui/material';
-import StorageIcon from '@mui/icons-material/Storage';
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import DescriptionIcon from '@mui/icons-material/Description';
-import SpellcheckIcon from '@mui/icons-material/Spellcheck';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import { NEW_PRODUCT_RESET } from '../../constants/productConstant';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, { Fragment, useEffect, useState } from "react";
+import "./newProduct.css";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, createProduct } from "../../redux/action/productAction";
+import MetaData from "../layout/MetaData";
+import Sidebar from "./Sidebar";
+import { Button } from "@mui/material";
+import StorageIcon from "@mui/icons-material/Storage";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import DescriptionIcon from "@mui/icons-material/Description";
+import SpellcheckIcon from "@mui/icons-material/Spellcheck";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import { NEW_PRODUCT_RESET } from "../../constants/productConstant";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const NewProduct = () => {
   const dispatch = useDispatch();
- const navigate = useNavigate();
+  const navigate = useNavigate();
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
   const [name, setName] = useState("");
@@ -35,10 +35,10 @@ const NewProduct = () => {
     "Attire",
     "womens",
     "kids",
-];
+  ];
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
@@ -61,14 +61,12 @@ const NewProduct = () => {
     myForm.set("Stock", Stock);
     myForm.append("image", image);
 
-    
     dispatch(createProduct(myForm));
   };
 
   const createProductImagesChange = (e) => {
     setImage(e.target.files[0]);
     setImagesPreview(URL.createObjectURL(e.target.files[0]));
-   
   };
 
   return (
@@ -144,12 +142,13 @@ const NewProduct = () => {
                 name="avatar"
                 accept="image/*"
                 onChange={createProductImagesChange}
-                
               />
             </div>
 
             <div id="createProductFormImage">
-            {imagesPreview &&  <img src = {imagesPreview} alt= "product Review"/>}
+              {imagesPreview && (
+                <img src={imagesPreview} alt="product Review" />
+              )}
             </div>
 
             <Button

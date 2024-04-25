@@ -1,34 +1,67 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { Fragment, useEffect } from "react";
+import CheckoutSteps from "./CheckoutSteps";
+import { useSelector, useDispatch } from "react-redux";
+import MetaData from "../layout/MetaData";
+import { createOrder, clearErrors } from "../../redux/action/orderAction";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Typography } from "@mui/material";
 
-import { useNavigate } from 'react-router-dom';
-import { createOrder } from '../../redux/action/orderAction';
-
-const CashOnDelivery = ({ order }) => {
-  const [contactInfo, setContactInfo] = useState({});
-
+const CashOnDelivery = () => {
+  const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const history = useNavigate();
+  const { shippingInfo, cartItems } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
+  const { error } = useSelector((state) => state.newOrder);
 
-  const handleContactInfoChange = (e) => {
-    setContactInfo({ ...contactInfo, [e.target.name]: e.target.value });
-  };
-
-  const handleCashOnDelivery = () => {
-    const orderData = { ...order, contactInfo };
-    dispatch(createOrder(orderData));
-    navigate('success');
-  };
+  useEffect(() => {
+    const submitOrder = async () => {
+      try {
+        const order = {
+          shippingInfo,
+          orderItems: cartItems,
+          itemsPrice: orderInfo.subtotal,
+          taxPrice: orderInfo.tax,
+          shippingPrice: orderInfo.shippingCharges,
+          totalPrice: orderInfo.totalPrice,
+          paymentInfo: {
+            type: "Cash On Delivery",
+            status: "Pending",
+          },
+        };
+  
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+  
+        dispatch(createOrder(order));
+        history("/success");
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    };
+  
+    submitOrder();
+  }, []); // Empty dependency array ensures the effect runs only once, when the component mounts
+  
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, error]);
 
   return (
-    <div>
-      {/* Form for collecting contact information */}
-      <input type="text" name="name" placeholder="Name" onChange={handleContactInfoChange} />
-      <input type="text" name="phone" placeholder="Phone" onChange={handleContactInfoChange} />
-      {/* Add more fields as needed */}
-
-      <button onClick={handleCashOnDelivery}>Confirm Order</button>
-    </div>
+    <Fragment>
+      <MetaData title="Payment" />
+      <CheckoutSteps activeStep={2} />
+      <div className="paymentContainer">
+        <Typography variant="h6">Payment Method: Cash On Delivery</Typography>
+      </div>
+    </Fragment>
   );
 };
 

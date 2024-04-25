@@ -27,6 +27,7 @@
 
 .cartPage {
   padding: 5vmax;
+  margin-top: 30px;
 }
 
 .cartHeader {
@@ -126,6 +127,7 @@
 @media screen and (max-width: 600px) {
   .cartPage {
     padding: 0;
+    margin-top: 30px;
     min-height: 60vh;
   }
 

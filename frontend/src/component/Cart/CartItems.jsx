@@ -1,24 +1,18 @@
-import React from 'react'
-import './CartItems.css'
-import { Link } from 'react-router-dom'
+import React from "react";
+import "./CartItems.css";
+import { Link } from "react-router-dom";
 
-
-
-
-const CartItems = ({item, deleteCartItems}) => {
-  
+const CartItems = ({ item, deleteCartItems }) => {
   return (
-  
     <div className="CartItemCard">
-      <img src={item.image} alt="" className='carticon-product-icon' />
+      <img src={item.image} alt="" className="carticon-product-icon" />
       <div>
         <Link to={`/product/${item.product}`}>{item.name} </Link>
         <span>${item.price}</span>
         <p onClick={() => deleteCartItems(item.product)}> Remove</p>
-     
-     </div>
-     <hr />
-{/* 
+      </div>
+      <hr />
+      {/* 
      <div className="cartitems-down">
 <div className="cartitems-total">
     <h1>Cart Total</h1>
@@ -41,11 +35,8 @@ const CartItems = ({item, deleteCartItems}) => {
     <button>Proceed to Checkout</button>
 </div>
 </div>  */}
-     </div>
-
-     
-      
+    </div>
   );
-}
+};
 
-export default CartItems
+export default CartItems;
