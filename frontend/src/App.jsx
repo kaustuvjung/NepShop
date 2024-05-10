@@ -54,15 +54,15 @@ const App = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
 
-  const [stripeApikey, setStripeApiKey] = useState("");
+  // const [stripeApikey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey() {
-    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-    const { data } = await axios.get(BACKEND_URL + "/api/v1/stripeapikey");
-    console.log("Received data from backend:", data);
+  // async function getStripeApiKey() {
+  //   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  //   const { data } = await axios.get(BACKEND_URL + "/api/v1/stripeapikey");
+  //   console.log("Received data from backend:", data);
 
-    setStripeApiKey(data.stripeApikey);
-  }
+  //   setStripeApiKey(data.stripeApikey);
+  // }
 
   useEffect(() => {
     dispatch(getLoginStatus());
@@ -70,7 +70,7 @@ const App = () => {
       dispatch(getUser());
     }
 
-    getStripeApiKey();
+    // getStripeApiKey();
   }, [dispatch, isLoggedIn, user]);
 
   return (
@@ -243,7 +243,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        
 
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/products" element={<ProductList />} />

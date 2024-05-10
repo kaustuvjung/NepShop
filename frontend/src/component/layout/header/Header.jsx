@@ -11,7 +11,7 @@ import Search from "../../Product/Search";
 import UserOptions from "./UserOptions";
 
 const Logo = (
-  <div className="flex lg:flex-1">
+  <div className="">
     <span className="sr-only">Your Compay</span>
     <Link to="/"> NEPSHOP</Link>
   </div>
@@ -32,26 +32,29 @@ export default function Header() {
   return (
     <header className=" bg-gray-900 text-white font-sans">
       <nav
-        className=" flex items-center justify-between p-6 mx-11 sticky z-50"
+        className=" flex-start items-center justify-between p-6 mx-11 sticky z-50"
         aria-label="Global"
       >
-        <div className="flex ml-24"> {Logo}</div>
+        <div className="ml-20"> {Logo}</div>
 
         <div className="flex  space-x-10 items-center justify-center">
+          <Search />
+
           <div>
             <NavLink
               to={"/products"}
-              className={`text-sm font-semibold leading-6 text-white " ${activeLink}`}
+              className={`text-sm    font-semibold leading-6 text-white " ${activeLink}`}
             >
               Product
             </NavLink>
           </div>
+
           <div className="flex space-x-10">
             <ShowOnLogout>
               <div className=" ">
                 <NavLink
                   to={"/login"}
-                  className={`text-sm font-semibold leading-6 text-white ${activeLink}`}
+                  className={`text-sm  font-semibold leading-6 text-white ${activeLink}`}
                 >
                   Login
                 </NavLink>

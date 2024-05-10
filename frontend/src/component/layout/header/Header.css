@@ -1,48 +1,41 @@
-.search{
+.search {
   margin-left: 400px;
-
 }
 
 .speedDial {
-    position: absolute;
-    right: 4.5vmax;
-    top: 1vmax;
-  }
-  
-  .speedDialIcon {
-    width: 56px;
-    height: 56px;
-    border-radius: 100%;
-  }
+  position: absolute;
+  right: 4.5vmax;
+  top: 2vmax;
+}
 
-  .username{
-    position: absolute;
-    right: 8vmax;
-    top: 2.3vmax;
-  }
+.speedDialIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+}
 
+.username {
+  position: absolute;
+  right: 8vmax;
+  top: 2.3vmax;
+}
 
-
-
-@media(max-width:500px){
+@media (max-width: 500px) {
   .speedDial {
     position: fixed;
     right: 4.5vmax;
     top: 1vmax;
   }
-  
+
   .speedDialIcon {
     width: 56px;
     height: 56px;
     border-radius: 100%;
   }
 
-  .username{
+  .username {
     position: absolute;
     right: 8vmax;
     top: 2.3vmax;
   }
-  
 }
-
-  

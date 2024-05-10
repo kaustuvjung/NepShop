@@ -146,7 +146,7 @@ const NewProduct = () => {
             </div>
 
             <div id="createProductFormImage">
-              {imagesPreview && (
+              {!imagesPreview && (
                 <img src={imagesPreview} alt="product Review" />
               )}
             </div>

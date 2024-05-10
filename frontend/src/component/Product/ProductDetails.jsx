@@ -106,12 +106,12 @@ const ProductDetails = () => {
           <div className="ProductDetails">
             <div>
               <div className="productDisplay-left">
-                <div className="productDisplay-img-list">
+                {/* <div className="productDisplay-img-list">
                   <img src={product.image?.filepath} alt="" />
                   <img src={product.image?.filepath} alt="" />
                   <img src={product.image?.filepath} alt="" />
                   <img src={product.image?.filepath} alt="" />
-                </div>
+                </div> */}
                 <div className="productDisplay-img">
                   <img
                     className="productDisplay-main-img"
@@ -173,7 +173,7 @@ const ProductDetails = () => {
                     <b
                       className={product.Stock < 1 ? "redColor" : "greenColor"}
                     >
-                      {product.Stock < 5 ? "LimitedStock" : ""}
+                      {product.Stock < 5 ? "LimitedStock " : ""}
                     </b>
                   </p>
                 ) : (

@@ -1,5 +1,5 @@
 // SearchUser.js
-import React from 'react';
+import React from "react";
 import { BiSearch } from "react-icons/bi";
 // import "./Search.css";
 import styles from "./Search.module.scss";
