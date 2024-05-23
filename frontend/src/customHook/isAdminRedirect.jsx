@@ -8,6 +8,7 @@ const isAdminRedirect = () => {
   useEffect(() => {
     //check whether user is login or not
     let isLoggedIn;
+    
     const redirectLoggedOutUser = async () => {
       try {
         isLoggedIn = await authService.getLoginStatus();
@@ -21,10 +22,11 @@ const isAdminRedirect = () => {
       }
       try {
         const user = await authService.getUser();
+        console.log(user);
       } catch (error) {
         console.log(error.message);
       }
-      if (user.role !== "admin") {
+      if (user.role == "admin") {
         toast.info("Unauthorized user");
         navigate("/");
         return;

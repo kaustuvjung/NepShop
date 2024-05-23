@@ -111,7 +111,7 @@ const UpdateProduct = () => {
 
   return (
     <Fragment>
-      <MetaData title="Create Product" />
+      <MetaData title="update Product" />
       <div className="dashboard">
         <Sidebar />
         <div className="newProductContainer">
@@ -120,7 +120,7 @@ const UpdateProduct = () => {
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Update  Product</h1>
 
             <div>
               <SpellcheckIcon />

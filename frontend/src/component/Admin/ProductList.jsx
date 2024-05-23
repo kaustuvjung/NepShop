@@ -37,7 +37,7 @@ const ProductList = () => {
         }
         if(isDeleted){
           toast.success("product deleted sucessfully");
-          navigate("/admin/dashboard");
+          navigate("/admin/products");
           dispatch({ type: DELETE_PRODUCT_RESET });
         }
         dispatch(getAdminProduct());

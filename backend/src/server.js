@@ -9,7 +9,7 @@ const payment = require("./routes/paymentRoute");
 const errorHandler = require("./middlewares/errorMiddleware");
 const connectDB = require("./db/database");
 const path = require("path");
-
+const axios = require('axios');
 const app = express();
 
 app.use(express.json());
@@ -33,6 +33,33 @@ app.get("/", (req, res) => {
 });
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+app.post("/khalti-api", async (req, res) => {
+  const payload = req.body;
+  console.log(payload)
+  const khaltiResponse = await axios.post(
+    "https://a.khalti.com/api/v2/epayment/initiate/",
+    payload,
+    {
+      headers: {
+        Authorization: `Key 5852222113d049ccaacf5d0dd0dd5db6`,
+      },
+    }
+  );
+
+  if(khaltiResponse){
+    res.json({
+      success:true,
+      data:khaltiResponse?.data
+    })
+  }else{
+    res.json({
+      success:false,
+      data:khaltiResponse?.data
+    })
+
+  }
+});
 
 // Error Middleware
 app.use(errorHandler);

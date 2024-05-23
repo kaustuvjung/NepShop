@@ -45,7 +45,7 @@ const CashOnDelivery = () => {
     };
   
     submitOrder();
-  }, []); // Empty dependency array ensures the effect runs only once, when the component mounts
+  }, []); 
   
   useEffect(() => {
     if (error) {

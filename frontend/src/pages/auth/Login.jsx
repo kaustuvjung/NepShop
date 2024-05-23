@@ -121,10 +121,10 @@ const Login = () => {
             <Link to="/register">Register</Link>
           </span>
           <br />
-          <p className="--text-center --fw-bold">or</p>
+          {/* <p className="--text-center --fw-bold">or</p>
           <div className="--flex-center">
             <button className="--btn --btn-google">Login With Google</button>
-          </div>
+          </div> */}
         </div>
       </Card>
     </div>

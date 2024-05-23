@@ -43,9 +43,9 @@ import UpdateProduct from "./component/Admin/UpdateProduct";
 import UserList from "./component/Admin/UserList";
 import OrderList from "./component/Admin/OrderList";
 import OrderProcess from "./component/Admin/OrderProcess";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import ProductReviews from "./component/Admin/ProductReviews";
+import Payment from "./component/Cart/Payment";
+import PaymentWrapper from "./component/Cart/Payment";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -54,15 +54,7 @@ const App = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
 
-  // const [stripeApikey, setStripeApiKey] = useState("");
 
-  // async function getStripeApiKey() {
-  //   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  //   const { data } = await axios.get(BACKEND_URL + "/api/v1/stripeapikey");
-  //   console.log("Received data from backend:", data);
-
-  //   setStripeApiKey(data.stripeApikey);
-  // }
 
   useEffect(() => {
     dispatch(getLoginStatus());
@@ -70,7 +62,7 @@ const App = () => {
       dispatch(getUser());
     }
 
-    // getStripeApiKey();
+   
   }, [dispatch, isLoggedIn, user]);
 
   return (
@@ -78,6 +70,11 @@ const App = () => {
       <ToastContainer />
 
       <Routes>
+      
+       <Route path="/Payment" element={<Payment/>}/>
+      
+
+
         <Route
           path="/"
           element={
@@ -86,6 +83,8 @@ const App = () => {
             </Layout>
           }
         />
+
+       
 
         <Route path="/shop" element={<Shop />} />
         <Route path="/search" element={<Search />} />
@@ -189,13 +188,13 @@ const App = () => {
           }
         />
 
-        {/* <Route path="/cashPayment"
+        <Route path="/cashPayment"
        element={
         <ProtectedRoute> 
         <Layout> <CashPayment/> </Layout>
         </ProtectedRoute>
        
-       }/> */}
+       }/>
 
         <Route
           path="/success"

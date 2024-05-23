@@ -8,6 +8,7 @@ import {
   CardExpiryElement,
   useStripe,
   useElements,
+  Elements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import "./payment.css";
@@ -18,12 +19,17 @@ import { Typography } from "@mui/material";
 import { clearErrors, createOrder } from "../../redux/action/orderAction";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { loadStripe } from "@stripe/stripe-js";
+
+// Load the Stripe object outside of a component's render to avoid recreating the Stripe object on every render.
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_API_KEY);
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
 
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   const payBtn = useRef(null);
@@ -34,6 +40,7 @@ const Payment = () => {
 
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
+    description: `Payment for order ${orderInfo.orderId}`, // Add description here
   };
 
   const order = {
@@ -56,7 +63,7 @@ const Payment = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        `${BACKEND_URL}/api/v1/payment/process`,
         paymentData,
         config
       );
@@ -84,7 +91,6 @@ const Payment = () => {
 
       if (result.error) {
         payBtn.current.disabled = false;
-
         toast.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
@@ -94,10 +100,9 @@ const Payment = () => {
           };
 
           dispatch(createOrder(order));
-
-          history("/success");
+          navigate("/success");
         } else {
-          toast.error("There's some issue while processing payment ");
+          toast.error("There's some issue while processing payment");
         }
       }
     } catch (error) {
@@ -118,7 +123,7 @@ const Payment = () => {
       <MetaData title="Payment" />
       <CheckoutSteps activeStep={2} />
       <div className="paymentContainer">
-        <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
+        <form className="paymentForm" onSubmit={submitHandler}>
           <Typography>Card Info</Typography>
           <div>
             <CreditCardIcon />
@@ -135,7 +140,7 @@ const Payment = () => {
 
           <input
             type="submit"
-            value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
+            value={`Pay - Rs${orderInfo && orderInfo.totalPrice}`}
             ref={payBtn}
             className="paymentFormBtn"
           />
@@ -145,4 +150,12 @@ const Payment = () => {
   );
 };
 
-export default Payment;
+const PaymentWrapper = () => {
+  return (
+    <Elements stripe={stripePromise}>
+      <Payment />
+    </Elements>
+  );
+};
+
+export default PaymentWrapper;

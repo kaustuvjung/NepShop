@@ -36,8 +36,8 @@ ChartJS.register(
 );
 
 const Dashboard = () => {
-  useRedirectLoggedOutUser("/login");
-  // isAdminRedirect("/");
+  // useRedirectLoggedOutUser("/login");
+  isAdminRedirect();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
