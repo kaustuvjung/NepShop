@@ -12,9 +12,6 @@ import Card from '../Card/Card';
 
 
 
-
-
-
 const Home = () => {
   const dispatch = useDispatch();
   const {loading, error, products} = useSelector(state => state.products)
