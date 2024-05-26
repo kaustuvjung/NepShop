@@ -152,7 +152,7 @@ const UserList = () => {
       <div className="dashboard">
         <Sidebar />
 
-        <div className="productListContainer">
+        {/* <div className="productListContainer">
           <h1 id="productListHeading">ALL USERS</h1>
 
           <DataGrid
@@ -163,6 +163,82 @@ const UserList = () => {
             className="productListTable"
             autoHeight
           />
+        </div> */}
+        
+        <div className="user-list">
+        {isLoading && <Spinner />}
+        <div className="table">
+          <div className="">
+            <span>
+              <h3>All Users</h3>
+            </span>
+            <span>
+              <Search
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </span>
+          </div>
+          {/* Table */}
+
+          {!isLoading && users.length === 0 ? (
+            <p>No user found...</p>
+          ) : (
+            <table>
+              <thead>
+                <tr>
+                  <th>s/n</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Change Role</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {currentItems.map((user, index) => {
+                  const { _id, name, email, role } = user;
+                  return (
+                    <tr key={_id}>
+                      <td>{index + 1}</td>
+                      <td>{shortenText(name, 8)}</td>
+                      <td>{email}</td>
+                      <td>{role}</td>
+                      <td>
+                        <ChangeRole _id={_id} email={email} />
+                      </td>
+                      <td>
+                        <span>
+                          <FaTrashAlt
+                            size={20}
+                            color="red"
+                            onClick={() => confirmDelete(_id)}
+                          />
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
+          <hr />
+        </div>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="Next"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          previousLabel="Prev"
+          renderOnZeroPageCount={null}
+          containerClassName="pagination"
+          pageLinkClassName="page-num"
+          previousLinkClassName="page-num"
+          nextLinkClassName="page-num"
+          activeLinkClassName="activePage"
+        />
         </div>
       </div>
     </Fragment>
@@ -171,78 +247,3 @@ const UserList = () => {
 
 export default UserList;
 
-// <div className="user-list">
-// {isLoading && <Spinner />}
-// <div className="table">
-//   <div className="">
-//     <span>
-//       <h3>All Users</h3>
-//     </span>
-//     <span>
-//       <Search
-//         value={search}
-//         onChange={(e) => setSearch(e.target.value)}
-//       />
-//     </span>
-//   </div>
-//   {/* Table */}
-
-//   {!isLoading && users.length === 0 ? (
-//     <p>No user found...</p>
-//   ) : (
-//     <table>
-//       <thead>
-//         <tr>
-//           <th>s/n</th>
-//           <th>Name</th>
-//           <th>Email</th>
-//           <th>Role</th>
-//           <th>Change Role</th>
-//           <th>Action</th>
-//         </tr>
-//       </thead>
-
-//       <tbody>
-//         {currentItems.map((user, index) => {
-//           const { _id, name, email, role } = user;
-//           return (
-//             <tr key={_id}>
-//               <td>{index + 1}</td>
-//               <td>{shortenText(name, 8)}</td>
-//               <td>{email}</td>
-//               <td>{role}</td>
-//               <td>
-//                 <ChangeRole _id={_id} email={email} />
-//               </td>
-//               <td>
-//                 <span>
-//                   <FaTrashAlt
-//                     size={20}
-//                     color="red"
-//                     onClick={() => confirmDelete(_id)}
-//                   />
-//                 </span>
-//               </td>
-//             </tr>
-//           );
-//         })}
-//       </tbody>
-//     </table>
-//   )}
-//   <hr />
-// </div>
-// <ReactPaginate
-//   breakLabel="..."
-//   nextLabel="Next"
-//   onPageChange={handlePageClick}
-//   pageRangeDisplayed={3}
-//   pageCount={pageCount}
-//   previousLabel="Prev"
-//   renderOnZeroPageCount={null}
-//   containerClassName="pagination"
-//   pageLinkClassName="page-num"
-//   previousLinkClassName="page-num"
-//   nextLinkClassName="page-num"
-//   activeLinkClassName="activePage"
-// />
-// </div>

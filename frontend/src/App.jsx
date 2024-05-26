@@ -46,6 +46,7 @@ import OrderProcess from "./component/Admin/OrderProcess";
 import ProductReviews from "./component/Admin/ProductReviews";
 import Payment from "./component/Cart/Payment";
 import PaymentWrapper from "./component/Cart/Payment";
+import UpdateUser from "./component/Admin/UpdateUser";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -213,8 +214,7 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Layout>
-                {" "}
-                <MyOrders />{" "}
+                <MyOrders />
               </Layout>
             </ProtectedRoute>
           }
@@ -225,8 +225,7 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Layout>
-                {" "}
-                <ConfirmOrder />{" "}
+                <ConfirmOrder />
               </Layout>
             </ProtectedRoute>
           }
@@ -236,8 +235,7 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Layout>
-                {" "}
-                <OrderDetails />{" "}
+                <OrderDetails />
               </Layout>
             </ProtectedRoute>
           }
@@ -253,6 +251,7 @@ const App = () => {
         <Route path="/admin/order/:id" element={<OrderProcess />} />
 
         <Route path="/admin/users" element={<UserList />} />
+        <Route path="/admin/user/:id" element={<UpdateUser />} />
 
         <Route path="/admin/reviews" element={<ProductReviews />} />
       </Routes>
